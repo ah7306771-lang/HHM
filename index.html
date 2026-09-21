@@ -1081,6 +1081,18 @@
   // ============ UTILITIES ============
   const $ = id => document.getElementById(id);
   const AUTH_KEY = 'hhm_auth';
+  const ICONS = {
+    plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;vertical-align:-2px"><path d="M12 5v14M5 12h14"/></svg>',
+    edit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>',
+    trash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>',
+    chevronRight: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px"><path d="M9 18l6-6-6-6"/></svg>',
+    chevronDown: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px"><path d="M6 9l6 6 6-6"/></svg>',
+    printer: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:-2px"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>',
+    check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;vertical-align:-2px"><path d="M20 6L9 17l-5-5"/></svg>',
+    x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;vertical-align:-2px"><path d="M18 6L6 18M6 6l12 12"/></svg>',
+    paperclip: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:-2px"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>'
+  };
+
   const REMEMBER_KEY = 'hhm_remember';
 
   // ============ AUTH ============
@@ -1450,7 +1462,7 @@
           '<td><input type="number" min="0" step="any" class="ln-qty" value="' + (l.qty != null ? l.qty : 1) + '"></td>' +
           '<td><input type="number" min="0" step="any" class="ln-price" value="' + (l.price != null ? l.price : 0) + '"></td>' +
           '<td class="num ln-total">' + money(lineTotal(l)) + '</td>' +
-          '<td>' + (lines.length > 1 ? '<button class="line-rm" data-action="lineRemove" data-line="' + l.id + '">✕</button>' : '') + '</td>' +
+          '<td>' + (lines.length > 1 ? '<button class="line-rm" data-action="lineRemove" data-line="' + l.id + '">' + ICONS.trash + '</button>' : '') + '</td>' +
         '</tr>';
       });
       html += '</tbody></table></div>';
@@ -1583,10 +1595,10 @@
 
       html += '<div class="sdoc-actions">';
       html += '<button class="btn btn-outline btn-sm" data-action="back">⇦ القائمة</button>';
-      html += '<button class="btn btn-info2 btn-sm" data-action="printQo" data-id="' + q.id + '">🖨️ طباعة</button>';
+      html += '<button class="btn btn-info2 btn-sm" data-action="printQo" data-id="' + q.id + '">' + ICONS.printer + ' طباعة</button>';
       if(q.status === 'draft'){
         html += '<button class="btn btn-outline btn-sm" data-action="qoEdit" data-id="' + q.id + '">تعديل</button>';
-        html += '<button class="btn btn-success btn-sm" data-action="qoApprove" data-id="' + q.id + '">✓ اعتماد</button>';
+        html += '<button class="btn btn-success btn-sm" data-action="qoApprove" data-id="' + q.id + '">' + ICONS.check + ' اعتماد</button>';
         html += '<button class="btn btn-danger-o btn-sm" data-action="qoReject" data-id="' + q.id + '">رفض</button>';
       } else if(q.status === 'approved'){
         html += '<button class="btn btn-accent btn-sm" data-action="qoConvert" data-id="' + q.id + '">تحويل لأمر بيع ←</button>';
@@ -1647,9 +1659,9 @@
 
       html += '<div class="ssection-title">مسار الاعتماد</div><div class="stimeline">' +
         '<span class="badge badge-' + (o.salesApprovedAt ? 'success' : 'muted') + '">' +
-          (o.salesApprovedAt ? '✓ اعتماد المبيعات — ' + fmtDate(new Date(o.salesApprovedAt).toISOString().slice(0,10)) : 'بانتظار اعتماد المبيعات') + '</span>' +
+          (o.salesApprovedAt ? ICONS.check + ' اعتماد المبيعات — ' + fmtDate(new Date(o.salesApprovedAt).toISOString().slice(0,10)) : 'بانتظار اعتماد المبيعات') + '</span>' +
         '<span class="badge badge-' + (o.financeApprovedAt ? 'success' : 'muted') + '">' +
-          (o.financeApprovedAt ? '✓ اعتماد الحسابات — ' + fmtDate(new Date(o.financeApprovedAt).toISOString().slice(0,10)) : 'بانتظار اعتماد الحسابات') + '</span>' +
+          (o.financeApprovedAt ? ICONS.check + ' اعتماد الحسابات — ' + fmtDate(new Date(o.financeApprovedAt).toISOString().slice(0,10)) : 'بانتظار اعتماد الحسابات') + '</span>' +
       '</div>';
 
       const canDispatch = (o.status === 'finance_approved' || o.status === 'partial') && dispQty < totalQty;
@@ -1681,12 +1693,12 @@
 
       html += '<div class="sdoc-actions">';
       html += '<button class="btn btn-outline btn-sm" data-action="back">⇦ القائمة</button>';
-      html += '<button class="btn btn-info2 btn-sm" data-action="printSo" data-id="' + o.id + '">🖨️ طباعة أمر البيع</button>';
+      html += '<button class="btn btn-info2 btn-sm" data-action="printSo" data-id="' + o.id + '">' + ICONS.printer + ' طباعة أمر البيع</button>';
       if(o.status === 'draft'){
-        html += '<button class="btn btn-success btn-sm" data-action="soApproveSales" data-id="' + o.id + '">✓ اعتماد المبيعات</button>';
+        html += '<button class="btn btn-success btn-sm" data-action="soApproveSales" data-id="' + o.id + '">' + ICONS.check + ' اعتماد المبيعات</button>';
       }
       if(o.status === 'sales_approved'){
-        html += '<button class="btn btn-success btn-sm" data-action="soApproveFinance" data-id="' + o.id + '">✓ اعتماد الحسابات</button>';
+        html += '<button class="btn btn-success btn-sm" data-action="soApproveFinance" data-id="' + o.id + '">' + ICONS.check + ' اعتماد الحسابات</button>';
       }
       html += '</div></div>';
       return html;
@@ -1841,7 +1853,7 @@
       html += docLinesReadonly(v.lines) + totalsHTML(v.lines) + '</div>';
       html += '<div class="sdoc-actions">' +
         '<button class="btn btn-outline btn-sm" data-action="back">⇦ القائمة</button>' +
-        '<button class="btn btn-info2 btn-sm" data-action="printInv" data-id="' + v.id + '">🖨️ طباعة</button>' +
+        '<button class="btn btn-info2 btn-sm" data-action="printInv" data-id="' + v.id + '">' + ICONS.printer + ' طباعة</button>' +
       '</div></div>';
       return html;
     }
@@ -2026,10 +2038,10 @@
       return prefix + String(maxNum + 1).padStart(digits, '0');
     }
 
-    let st = { tab: 'settings', expanded: {}, formTree: null, formParentId: null, formEditId: null, curForm: false, curFormId: null, _settingsDraft: null };
+    let st = { tab: 'settings', expanded: {}, formTree: null, formParentId: null, formEditId: null, curForm: false, curFormId: null, _settingsDraft: null, jeMode: 'list', jeId: null, jeDraft: null };
 
     function open(){
-      st = { tab: 'settings', expanded: {}, formTree: null, formParentId: null, formEditId: null, curForm: false, curFormId: null, _settingsDraft: null };
+      st = { tab: 'settings', expanded: {}, formTree: null, formParentId: null, formEditId: null, curForm: false, curFormId: null, _settingsDraft: null, jeMode: 'list', jeId: null, jeDraft: null };
       render();
     }
 
@@ -2043,6 +2055,7 @@
         tabBtn('cc1', 'مركز تكلفة 1') +
         tabBtn('cc2', 'مركز تكلفة 2') +
         tabBtn('currencies', 'العملات') +
+        tabBtn('journal', 'القيود اليومية') +
       '</div>';
 
       if(st.tab === 'settings') html += renderSettingsTab();
@@ -2050,8 +2063,11 @@
       else if(st.tab === 'cc1') html += renderTreeTab('cc1');
       else if(st.tab === 'cc2') html += renderTreeTab('cc2');
       else if(st.tab === 'currencies') html += renderCurrenciesTab();
+      else if(st.tab === 'journal') html += renderJournalTab();
 
       root.innerHTML = html;
+      bindJeLineEvents();
+      bindJeAttachmentEvents();
     }
 
     function tabBtn(id, label){
@@ -2128,14 +2144,14 @@
       const isLeaf = node.level >= settings.levelCount;
       let html = '<div class="tnode-row" style="padding-right:' + ((node.level-1)*22) + 'px">';
       html += children.length ?
-        ('<button class="texpand" data-action="toggleExpand" data-id="' + node.id + '">' + (expanded ? '▾' : '▸') + '</button>') :
+        ('<button class="texpand" data-action="toggleExpand" data-id="' + node.id + '">' + (expanded ? ICONS.chevronDown : ICONS.chevronRight) + '</button>') :
         '<span class="texpand leaf">•</span>';
       html += '<span class="tcode">' + node.code + '</span><span class="tname">' + esc(node.name) + '</span>';
       if(isLeaf) html += '<span class="tbadge-leaf">قابل للاستخدام</span>';
       html += '<span class="tactions-row">';
-      if(!isLeaf) html += '<button class="ticon-btn add" data-action="treeAddChild" data-tree="' + treeKey + '" data-id="' + node.id + '" title="إضافة فرع">+</button>';
-      html += '<button class="ticon-btn edit" data-action="treeEdit" data-tree="' + treeKey + '" data-id="' + node.id + '" title="تعديل">✎</button>';
-      html += '<button class="ticon-btn del" data-action="treeDelete" data-tree="' + treeKey + '" data-id="' + node.id + '" title="حذف">✕</button>';
+      if(!isLeaf) html += '<button class="ticon-btn add" data-action="treeAddChild" data-tree="' + treeKey + '" data-id="' + node.id + '" title="إضافة فرع">' + ICONS.plus + '</button>';
+      html += '<button class="ticon-btn edit" data-action="treeEdit" data-tree="' + treeKey + '" data-id="' + node.id + '" title="تعديل">' + ICONS.edit + '</button>';
+      html += '<button class="ticon-btn del" data-action="treeDelete" data-tree="' + treeKey + '" data-id="' + node.id + '" title="حذف">' + ICONS.trash + '</button>';
       html += '</span></div>';
       if(children.length && expanded){
         children.forEach(function(c){ html += renderNode(c, arr, treeKey, settings); });
@@ -2214,8 +2230,8 @@
         '<th>الكود</th><th>الاسم</th><th>سعر التحويل (مقابل الجنيه)</th><th></th></tr></thead><tbody>';
       arr.forEach(function(c){
         html += '<tr><td><b>' + esc(c.code) + '</b></td><td>' + esc(c.name) + '</td><td class="num">' + c.rate + '</td>' +
-          '<td><span class="tactions-row"><button class="ticon-btn edit" data-action="curEdit" data-id="' + c.id + '">✎</button>' +
-          (c.code !== 'EGP' ? '<button class="ticon-btn del" data-action="curDelete" data-id="' + c.id + '">✕</button>' : '') +
+          '<td><span class="tactions-row"><button class="ticon-btn edit" data-action="curEdit" data-id="' + c.id + '">' + ICONS.edit + '</button>' +
+          (c.code !== 'EGP' ? '<button class="ticon-btn del" data-action="curDelete" data-id="' + c.id + '">' + ICONS.trash + '</button>' : '') +
           '</span></td></tr>';
       });
       return html + '</tbody></table></div>';
@@ -2303,6 +2319,22 @@
         else if(action === 'curCancel'){ st.curForm = false; st.curFormId = null; render(); }
         else if(action === 'curSave'){ curSave(); }
         else if(action === 'curDelete'){ curDelete(id); }
+        else if(action === 'jeNew'){ st.jeMode = 'form'; st.jeId = null; st.jeDraft = null; render(); }
+        else if(action === 'jeOpen'){ st.jeMode = 'form'; st.jeId = id; st.jeDraft = null; render(); }
+        else if(action === 'jeBack'){ st.jeMode = 'list'; st.jeId = null; st.jeDraft = null; render(); }
+        else if(action === 'jeSaveDraft'){ jeSaveDraft(); }
+        else if(action === 'jePost'){ jePost(); }
+        else if(action === 'jeDelete'){ jeDelete(id); }
+        else if(action === 'jeReverse'){ jeReverse(id); }
+        else if(action === 'jePrint'){ jePrintDoc(id); }
+        else if(action === 'jeLineAdd'){ jeLineAdd(); }
+        else if(action === 'jeLineRemove'){ jeLineRemove(el.getAttribute('data-line')); }
+        else if(action === 'jeAttachmentRemove'){
+          jeSnapshotHeader(st.jeDraft);
+          st.jeDraft.lines = readJeLinesFromDOM();
+          st.jeDraft.attachmentName = null; st.jeDraft.attachmentType = null; st.jeDraft.attachmentData = null;
+          render();
+        }
       });
 
       root.addEventListener('change', function(e){
@@ -2317,6 +2349,437 @@
         cfg.levelCount = n; cfg.digits = newDigits;
         render();
       });
+    }
+
+
+    // ---------- SHARED HELPERS (journal) ----------
+    function fmtDate(iso){
+      if(!iso) return '—';
+      const d = new Date(iso + 'T00:00:00');
+      if(isNaN(d.getTime())) return iso;
+      const dd = String(d.getDate()).padStart(2,'0');
+      const mm = String(d.getMonth()+1).padStart(2,'0');
+      return dd + '/' + mm + '/' + d.getFullYear();
+    }
+    function money(n){
+      n = Number(n) || 0;
+      const parts = n.toFixed(2).split('.');
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      return parts.join('.') + ' ج.م';
+    }
+    function todayISO(){ return new Date().toISOString().slice(0,10); }
+    function nextNo(type){
+      let seq = {};
+      try{ seq = JSON.parse(localStorage.getItem('hhm_seq') || '{}'); }catch(e){ seq = {}; }
+      const year = new Date().getFullYear();
+      const k = type + '_' + year;
+      seq[k] = (seq[k] || 0) + 1;
+      localStorage.setItem('hhm_seq', JSON.stringify(seq));
+      return type + '-' + year + '-' + String(seq[k]).padStart(4, '0');
+    }
+    function leafOptions(treeKey){
+      const settings = loadSettings()[treeKey];
+      const arr = loadArr(TREE_META[treeKey].key);
+      return arr.filter(function(n){ return n.level >= settings.levelCount; })
+                .sort(function(a,b){ return a.code.localeCompare(b.code); });
+    }
+    function currencyRate(code){
+      const c = loadArr(K_CUR).find(function(x){ return x.code === code; });
+      return c ? (Number(c.rate) || 1) : 1;
+    }
+
+    // ---------- JOURNAL ENTRIES (القيود اليومية) ----------
+    const K_JE = 'hhm_journal_entries';
+
+    function blankJeLine(){ return { id: uid(), accountId: '', currency: 'EGP', debit: 0, credit: 0, cc1Id: '', cc2Id: '', note: '' }; }
+    function jeLineEGP(line, field){ return (Number(line[field]) || 0) * currencyRate(line.currency || 'EGP'); }
+    function jeTotals(lines){
+      let debit = 0, credit = 0;
+      (lines || []).forEach(function(l){ debit += jeLineEGP(l,'debit'); credit += jeLineEGP(l,'credit'); });
+      return { debit: debit, credit: credit };
+    }
+
+    function renderJournalTab(){
+      if(st.jeMode === 'form') return renderJeForm();
+      return renderJeList();
+    }
+
+    function renderJeList(){
+      const rows = loadArr(K_JE).slice().reverse();
+      let html = '<div class="sbar"><div class="sbar-title">' + rows.length + ' قيد يومية</div>' +
+        '<button class="btn btn-accent" data-action="jeNew">' + ICONS.plus + ' قيد جديد</button></div>';
+      if(!rows.length){ return html + emptyBlock('🧾', 'مفيش قيود يومية لسه', 'ابدأ بإنشاء أول قيد يومية.'); }
+      html += '<div class="stable-wrap"><table class="stable"><thead><tr>' +
+        '<th>رقم القيد</th><th>التاريخ</th><th>الشرح</th><th>الإجمالي (ج.م)</th><th>الحالة</th></tr></thead><tbody>';
+      rows.forEach(function(j){
+        const total = jeTotals(j.lines).debit;
+        let badge = { t: 'مسودة', c: 'muted' };
+        if(j.status === 'posted') badge = j.reversedByNo ? { t: 'مرحل (معكوس)', c: 'accent' } : { t: 'مرحل', c: 'success' };
+        html += '<tr data-action="jeOpen" data-id="' + j.id + '">' +
+          '<td><b>' + (j.no || '—') + '</b></td><td>' + fmtDate(j.date) + '</td>' +
+          '<td>' + esc(j.description || '—') + (j.attachmentName ? ' ' + ICONS.paperclip : '') + '</td>' +
+          '<td class="num">' + money(total) + '</td>' +
+          '<td><span class="badge badge-' + badge.c + '">' + badge.t + '</span></td></tr>';
+      });
+      return html + '</tbody></table></div>';
+    }
+
+    function renderJeForm(){
+      let entry;
+      if(st.jeDraft && st.jeDraft._forId === (st.jeId || 'new')){
+        entry = st.jeDraft;
+      } else {
+        const existing = st.jeId ? loadArr(K_JE).find(function(x){ return x.id === st.jeId; }) : null;
+        entry = existing ? JSON.parse(JSON.stringify(existing)) :
+          { id: uid(), no: null, date: todayISO(), currency: 'EGP', description: '', status: 'draft', lines: [blankJeLine()] };
+        entry._forId = st.jeId || 'new';
+        st.jeDraft = entry;
+      }
+      const readOnly = entry.status === 'posted';
+      const year = entry.date ? entry.date.slice(0,4) : new Date().getFullYear();
+      const accounts = leafOptions('accounts');
+      const cc1s = leafOptions('cc1');
+      const cc2s = leafOptions('cc2');
+      const currencies = loadArr(K_CUR);
+
+      let html = '<div class="sform-card">';
+      html += '<div class="sbar"><div class="sbar-title">' + (entry.no ? entry.no : 'قيد يومية جديد') +
+        (readOnly ? ' <span class="badge badge-success" style="margin-right:8px">مرحل' + (entry.reversedByNo ? ' (معكوس)' : '') + '</span>' : ' <span class="badge badge-muted" style="margin-right:8px">مسودة</span>') +
+        '</div><button class="btn btn-outline" data-action="jeBack">⇦ رجوع للقائمة</button></div>';
+
+      html += '<div class="sform-grid">' +
+        '<div class="sfield"><label>السنة</label><input type="text" value="' + year + '" disabled></div>' +
+        '<div class="sfield"><label>التاريخ</label><input type="date" id="jeDate" value="' + entry.date + '"' + (readOnly ? ' disabled' : '') + '></div>' +
+        '<div class="sfield"><label>العملة</label><select id="jeCurrency"' + (readOnly ? ' disabled' : '') + '>' +
+          currencies.map(function(c){ return '<option value="' + c.code + '"' + (c.code === entry.currency ? ' selected' : '') + '>' + c.code + ' — ' + esc(c.name) + '</option>'; }).join('') +
+        '</select></div>' +
+      '</div>';
+      html += '<div class="sfield"><label>شرح القيد</label><textarea id="jeDescription" placeholder="شرح القيد"' + (readOnly ? ' disabled' : '') + '>' + esc(entry.description) + '</textarea></div>';
+
+      html += '<div class="sfield"><label>' + ICONS.paperclip + ' مرفق (اختياري)</label>';
+      if(entry.attachmentName){
+        html += '<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:#f8fafc;border-radius:10px;border:1.5px solid var(--border);flex-wrap:wrap">' +
+          '<span style="flex:1;font-size:13px;font-weight:700">' + ICONS.paperclip + ' ' + esc(entry.attachmentName) + '</span>' +
+          '<a href="' + entry.attachmentData + '" download="' + esc(entry.attachmentName) + '" class="btn btn-outline btn-sm" style="text-decoration:none">تحميل / معاينة</a>' +
+          (readOnly ? '' : '<button class="btn btn-danger-o btn-sm" data-action="jeAttachmentRemove">' + ICONS.trash + ' إزالة</button>') +
+        '</div>';
+      } else if(!readOnly){
+        html += '<input type="file" id="jeAttachmentInput" accept="image/*,.pdf">' +
+          '<p style="font-size:11px;color:var(--muted);margin-top:6px">صورة أو PDF — حد أقصى 2 ميجا</p>';
+      } else {
+        html += '<div style="color:var(--muted);font-size:13px">لا يوجد مرفق</div>';
+      }
+      html += '</div>';
+
+      html += renderJeLinesTable(entry, accounts, cc1s, cc2s, currencies, readOnly);
+
+      const totals = jeTotals(entry.lines);
+      const diff = Math.round((totals.debit - totals.credit) * 100) / 100;
+      html += '<div class="stotals"><div class="stotals-box" style="min-width:280px">' +
+        '<div class="stotals-row"><span>إجمالي مدين (ج.م)</span><span id="jeTotalDebit">' + money(totals.debit) + '</span></div>' +
+        '<div class="stotals-row"><span>إجمالي دائن (ج.م)</span><span id="jeTotalCredit">' + money(totals.credit) + '</span></div>' +
+        '<div class="stotals-row grand" id="jeTotalDiffRow" style="color:' + (diff === 0 ? 'var(--success)' : 'var(--danger)') + '">' +
+          '<span>الفرق</span><span id="jeTotalDiff">' + money(Math.abs(diff)) + (diff === 0 ? ' ' + ICONS.check + ' متزن' : ' غير متزن') + '</span></div>' +
+      '</div></div>';
+
+      html += '<div class="sform-actions">';
+      if(!readOnly){
+        html += '<button class="btn btn-outline" data-action="jeSaveDraft">حفظ كمسودة</button>';
+        html += '<button class="btn btn-accent" data-action="jePost">' + ICONS.check + ' ترحيل القيد</button>';
+        if(entry.no) html += '<button class="btn btn-danger-o" data-action="jeDelete" data-id="' + entry.id + '">' + ICONS.trash + ' حذف</button>';
+      } else {
+        html += '<button class="btn btn-info2" data-action="jePrint" data-id="' + entry.id + '">' + ICONS.printer + ' طباعة</button>';
+        if(!entry.reversedByNo) html += '<button class="btn btn-accent" data-action="jeReverse" data-id="' + entry.id + '">قيد عكسي</button>';
+        html += '<button class="btn btn-danger-o" data-action="jeDelete" data-id="' + entry.id + '">' + ICONS.trash + ' حذف</button>';
+      }
+      html += '</div></div>';
+      return html;
+    }
+
+    function renderJeLinesTable(entry, accounts, cc1s, cc2s, currencies, readOnly){
+      let html = '<div class="lines-wrap"><table class="lines-table" style="min-width:1140px"><thead><tr>' +
+        '<th style="min-width:170px">الحساب</th>' +
+        '<th style="width:80px">العملة</th>' +
+        '<th style="width:100px">مدين</th>' +
+        '<th style="width:100px">دائن</th>' +
+        '<th style="width:100px">مدين (ج.م)</th>' +
+        '<th style="width:100px">دائن (ج.م)</th>' +
+        '<th style="min-width:130px">مركز تكلفة 1</th>' +
+        '<th style="min-width:130px">مركز تكلفة 2</th>' +
+        '<th style="min-width:120px">بيان السطر</th>' +
+        (readOnly ? '' : '<th style="width:40px"></th>') +
+      '</tr></thead><tbody id="jeLinesBody">';
+      entry.lines.forEach(function(l){
+        const rate = currencyRate(l.currency || 'EGP');
+        html += '<tr data-line="' + l.id + '">';
+        html += '<td><select class="je-account"' + (readOnly ? ' disabled' : '') + '><option value="">— اختر —</option>' +
+          accounts.map(function(a){ return '<option value="' + a.id + '"' + (a.id === l.accountId ? ' selected' : '') + '>' + a.code + ' - ' + esc(a.name) + '</option>'; }).join('') + '</select></td>';
+        html += '<td><select class="je-currency"' + (readOnly ? ' disabled' : '') + '>' +
+          currencies.map(function(c){ return '<option value="' + c.code + '"' + (c.code === (l.currency || 'EGP') ? ' selected' : '') + '>' + c.code + '</option>'; }).join('') + '</select></td>';
+        html += '<td><input type="number" min="0" step="any" class="je-debit" value="' + (l.debit || 0) + '"' + (readOnly ? ' disabled' : '') + '></td>';
+        html += '<td><input type="number" min="0" step="any" class="je-credit" value="' + (l.credit || 0) + '"' + (readOnly ? ' disabled' : '') + '></td>';
+        html += '<td class="num je-debit-egp">' + money((l.debit || 0) * rate) + '</td>';
+        html += '<td class="num je-credit-egp">' + money((l.credit || 0) * rate) + '</td>';
+        html += '<td><select class="je-cc1"' + (readOnly ? ' disabled' : '') + '><option value="">—</option>' +
+          cc1s.map(function(c){ return '<option value="' + c.id + '"' + (c.id === l.cc1Id ? ' selected' : '') + '>' + c.code + ' - ' + esc(c.name) + '</option>'; }).join('') + '</select></td>';
+        html += '<td><select class="je-cc2"' + (readOnly ? ' disabled' : '') + '><option value="">—</option>' +
+          cc2s.map(function(c){ return '<option value="' + c.id + '"' + (c.id === l.cc2Id ? ' selected' : '') + '>' + c.code + ' - ' + esc(c.name) + '</option>'; }).join('') + '</select></td>';
+        html += '<td><input type="text" class="je-note" value="' + esc(l.note || '') + '" placeholder="بيان"' + (readOnly ? ' disabled' : '') + '></td>';
+        if(!readOnly) html += '<td>' + (entry.lines.length > 1 ? '<button class="line-rm" data-action="jeLineRemove" data-line="' + l.id + '">' + ICONS.trash + '</button>' : '') + '</td>';
+        html += '</tr>';
+      });
+      html += '</tbody></table></div>';
+      if(!readOnly) html += '<button class="line-add" data-action="jeLineAdd">' + ICONS.plus + ' إضافة سطر</button>';
+      return html;
+    }
+
+    function readJeLinesFromDOM(){
+      const rows = document.querySelectorAll('#jeLinesBody tr');
+      const lines = [];
+      rows.forEach(function(r){
+        const accSel = r.querySelector('.je-account');
+        lines.push({
+          id: r.getAttribute('data-line'),
+          accountId: accSel ? accSel.value : '',
+          currency: r.querySelector('.je-currency').value,
+          debit: parseFloat(r.querySelector('.je-debit').value) || 0,
+          credit: parseFloat(r.querySelector('.je-credit').value) || 0,
+          cc1Id: r.querySelector('.je-cc1') ? r.querySelector('.je-cc1').value : '',
+          cc2Id: r.querySelector('.je-cc2') ? r.querySelector('.je-cc2').value : '',
+          note: r.querySelector('.je-note').value.trim()
+        });
+      });
+      return lines;
+    }
+
+    function jeSnapshotHeader(entry){
+      entry.date = val('jeDate') || todayISO();
+      entry.currency = val('jeCurrency') || 'EGP';
+      entry.description = val('jeDescription');
+    }
+
+    function bindJeLineEvents(){
+      const body = document.getElementById('jeLinesBody');
+      if(!body) return;
+      function recalcRow(row){
+        const rate = currencyRate(row.querySelector('.je-currency').value);
+        const debit = parseFloat(row.querySelector('.je-debit').value) || 0;
+        const credit = parseFloat(row.querySelector('.je-credit').value) || 0;
+        row.querySelector('.je-debit-egp').textContent = money(debit * rate);
+        row.querySelector('.je-credit-egp').textContent = money(credit * rate);
+      }
+      function recalcTotals(){
+        const totals = jeTotals(readJeLinesFromDOM());
+        const diff = Math.round((totals.debit - totals.credit) * 100) / 100;
+        const dEl = document.getElementById('jeTotalDebit');
+        const cEl = document.getElementById('jeTotalCredit');
+        const rowEl = document.getElementById('jeTotalDiffRow');
+        const diffEl = document.getElementById('jeTotalDiff');
+        if(!dEl || !cEl || !rowEl || !diffEl) return;
+        dEl.textContent = money(totals.debit);
+        cEl.textContent = money(totals.credit);
+        rowEl.style.color = diff === 0 ? 'var(--success)' : 'var(--danger)';
+        diffEl.textContent = money(Math.abs(diff)) + (diff === 0 ? ' ' + ICONS.check + ' متزن' : ' غير متزن');
+      }
+      body.addEventListener('input', function(e){ const row = e.target.closest('tr'); if(row){ recalcRow(row); recalcTotals(); } });
+      body.addEventListener('change', function(e){ const row = e.target.closest('tr'); if(row){ recalcRow(row); recalcTotals(); } });
+    }
+
+    function bindJeAttachmentEvents(){
+      const inp = document.getElementById('jeAttachmentInput');
+      if(!inp) return;
+      inp.addEventListener('change', function(e){
+        const file = e.target.files[0];
+        if(!file) return;
+        if(file.size > 2 * 1024 * 1024){ toast('حجم الملف كبير — الحد الأقصى 2 ميجا.'); inp.value = ''; return; }
+        const reader = new FileReader();
+        reader.onload = function(){
+          jeSnapshotHeader(st.jeDraft);
+          st.jeDraft.lines = readJeLinesFromDOM();
+          st.jeDraft.attachmentName = file.name;
+          st.jeDraft.attachmentType = file.type;
+          st.jeDraft.attachmentData = reader.result;
+          render();
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function jeLineAdd(){
+      jeSnapshotHeader(st.jeDraft);
+      st.jeDraft.lines = readJeLinesFromDOM();
+      st.jeDraft.lines.push(blankJeLine());
+      render();
+    }
+    function jeLineRemove(lineId){
+      const lines = readJeLinesFromDOM();
+      if(lines.length <= 1) return;
+      jeSnapshotHeader(st.jeDraft);
+      st.jeDraft.lines = lines.filter(function(l){ return l.id !== lineId; });
+      render();
+    }
+
+    function jeCollect(){
+      const entry = st.jeDraft;
+      jeSnapshotHeader(entry);
+      const rawLines = readJeLinesFromDOM();
+      entry.lines = rawLines.filter(function(l){ return l.accountId || l.debit || l.credit; });
+      return entry;
+    }
+
+    function jeValidate(entry){
+      if(!entry.lines.length) return 'أضف سطر واحد على الأقل.';
+      for(let i = 0; i < entry.lines.length; i++){
+        const l = entry.lines[i];
+        if(!l.accountId) return 'اختر رقم الحساب لكل سطر.';
+        if(l.debit < 0 || l.credit < 0) return 'القيم مينفعش تكون بالسالب.';
+        if(l.debit > 0 && l.credit > 0) return 'السطر مينفعش يكون فيه مدين ودائن في نفس الوقت.';
+      }
+      const totals = jeTotals(entry.lines);
+      const diff = Math.round((totals.debit - totals.credit) * 100) / 100;
+      if(diff !== 0) return 'القيد غير متزن — الفرق ' + money(Math.abs(diff)) + '. لازم إجمالي المدين = إجمالي الدائن بالجنيه.';
+      return null;
+    }
+
+    function saveJe(entry){
+      const accounts = loadArr(TREE_META.accounts.key);
+      const cc1arr = loadArr(TREE_META.cc1.key);
+      const cc2arr = loadArr(TREE_META.cc2.key);
+      entry.lines.forEach(function(l){
+        const a = accounts.find(function(x){ return x.id === l.accountId; });
+        l.accountCode = a ? a.code : ''; l.accountName = a ? a.name : '';
+        const c1 = cc1arr.find(function(x){ return x.id === l.cc1Id; });
+        l.cc1Code = c1 ? c1.code : ''; l.cc1Name = c1 ? c1.name : '';
+        const c2 = cc2arr.find(function(x){ return x.id === l.cc2Id; });
+        l.cc2Code = c2 ? c2.code : ''; l.cc2Name = c2 ? c2.name : '';
+      });
+      delete entry._forId;
+      if(!entry.no) entry.no = nextNo('JE');
+      entry.updatedAt = Date.now();
+      const arr = loadArr(K_JE);
+      const idx = arr.findIndex(function(x){ return x.id === entry.id; });
+      if(idx >= 0) arr[idx] = entry; else { entry.createdAt = Date.now(); arr.push(entry); }
+      saveArr(K_JE, arr);
+    }
+
+    function jeSaveDraft(){
+      const entry = jeCollect();
+      const err = jeValidate(entry);
+      if(err){ toast(err); return; }
+      saveJe(entry);
+      st.jeDraft = null; st.jeId = entry.id; render();
+    }
+    function jePost(){
+      const entry = jeCollect();
+      const err = jeValidate(entry);
+      if(err){ toast(err); return; }
+      if(!confirm('تأكيد ترحيل القيد؟ بعد الترحيل مش هينفع تعديله.')) return;
+      entry.status = 'posted';
+      entry.postedAt = Date.now();
+      saveJe(entry);
+      st.jeDraft = null; st.jeId = entry.id; render();
+    }
+    function jeDelete(id){
+      if(!confirm('تأكيد حذف القيد؟ الإجراء ده نهائي.')) return;
+      const arr = loadArr(K_JE);
+      const entry = arr.find(function(x){ return x.id === id; });
+      if(entry && entry.reversalOfId){
+        const orig = arr.find(function(x){ return x.id === entry.reversalOfId; });
+        if(orig){ orig.reversedByNo = null; orig.reversedById = null; }
+      }
+      saveArr(K_JE, arr.filter(function(x){ return x.id !== id; }));
+      st.jeMode = 'list'; st.jeId = null; st.jeDraft = null; render();
+    }
+    function jeReverse(id){
+      const arr = loadArr(K_JE);
+      const orig = arr.find(function(x){ return x.id === id; });
+      if(!orig) return;
+      if(!confirm('تأكيد إنشاء قيد عكسي لهذا القيد؟')) return;
+      const rev = {
+        id: uid(), no: nextNo('JE'), date: todayISO(), currency: orig.currency,
+        description: 'عكس قيد رقم ' + orig.no + (orig.description ? ' — ' + orig.description : ''),
+        status: 'posted', postedAt: Date.now(),
+        reversalOfId: orig.id, reversalOfNo: orig.no,
+        lines: orig.lines.map(function(l){
+          return {
+            id: uid(), accountId: l.accountId, accountCode: l.accountCode, accountName: l.accountName,
+            currency: l.currency, debit: l.credit, credit: l.debit,
+            cc1Id: l.cc1Id, cc1Code: l.cc1Code, cc1Name: l.cc1Name,
+            cc2Id: l.cc2Id, cc2Code: l.cc2Code, cc2Name: l.cc2Name,
+            note: l.note
+          };
+        }),
+        createdAt: Date.now()
+      };
+      arr.push(rev);
+      orig.reversedByNo = rev.no; orig.reversedById = rev.id;
+      saveArr(K_JE, arr);
+      st.jeMode = 'form'; st.jeId = rev.id; st.jeDraft = null; render();
+    }
+
+    const JE_LOGO_SVG = '<svg viewBox="0 0 128 128" fill="none" stroke="#0f172a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M32 34v60M58 34v60M32 64h26"/><path d="M74 94V34l11 22 11-22v60"/></svg>';
+
+    function jePrintDoc(id){
+      const entry = loadArr(K_JE).find(function(x){ return x.id === id; });
+      if(!entry) return;
+      const w = window.open('', '_blank');
+      if(!w){ toast('المتصفح منع فتح نافذة الطباعة — اسمح بالنوافذ المنبثقة.'); return; }
+      let rows = '';
+      entry.lines.forEach(function(l, i){
+        rows += '<tr><td>' + (i+1) + '</td>' +
+          '<td>' + esc(l.accountCode || '') + ' - ' + esc(l.accountName || '') + '</td>' +
+          '<td>' + esc(l.note || '') + '</td>' +
+          '<td>' + esc(l.cc1Code || '—') + '</td>' +
+          '<td>' + esc(l.cc2Code || '—') + '</td>' +
+          '<td>' + money(jeLineEGP(l,'debit')) + '</td>' +
+          '<td>' + money(jeLineEGP(l,'credit')) + '</td></tr>';
+      });
+      const totals = jeTotals(entry.lines);
+      const attMeta = entry.attachmentName ? ('<div class="pmeta">مرفق: ' + esc(entry.attachmentName) + '</div>') : '';
+      const htmlDoc =
+        '<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">' +
+        '<title>قيد يومية ' + (entry.no || '') + '</title>' +
+        '<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">' +
+        '<style>' +
+          '*{box-sizing:border-box;margin:0;padding:0}' +
+          'body{font-family:Cairo,system-ui,sans-serif;color:#0f172a;padding:36px;max-width:900px;margin:0 auto}' +
+          '.phead{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #fbbf24;padding-bottom:18px;margin-bottom:22px}' +
+          '.pbrand{display:flex;align-items:center;gap:12px}' +
+          '.plogo{width:52px;height:52px;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:14px;display:grid;place-items:center}' +
+          '.plogo svg{width:32px;height:32px}' +
+          '.pname{font-size:20px;font-weight:900}' +
+          '.psub{font-size:11px;color:#64748b}' +
+          '.pdoc{text-align:left}' +
+          '.ptitle{font-size:17px;font-weight:800;background:#0f172a;color:#fbbf24;padding:6px 16px;border-radius:8px;display:inline-block}' +
+          '.pno{font-size:13px;color:#64748b;margin-top:6px}' +
+          '.pmeta{font-size:12px;color:#64748b;margin-top:2px}' +
+          '.pinfo{display:flex;justify-content:space-between;gap:20px;margin-bottom:18px;font-size:13px;flex-wrap:wrap}' +
+          '.pinfo .lbl{color:#64748b;font-size:11px;font-weight:700;margin-bottom:3px}' +
+          '.pinfo .val{font-weight:800}' +
+          'table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:12px}' +
+          'th{background:#0f172a;color:#fff;text-align:right;padding:8px 9px;font-size:11px}' +
+          'td{padding:8px 9px;border-bottom:1px solid #e2e8f0}' +
+          'tr:nth-child(even) td{background:#f8fafc}' +
+          'tfoot td{font-weight:900;background:#f1f5f9;border-top:2px solid #0f172a}' +
+          '.psign{display:flex;justify-content:space-between;margin-top:60px}' +
+          '.psign div{width:30%;text-align:center;border-top:1.5px solid #94a3b8;padding-top:8px;font-size:12px;color:#475569}' +
+          '.pfoot{text-align:center;color:#94a3b8;font-size:11px;margin-top:40px}' +
+          '@media print{body{padding:14mm}}' +
+        '</style></head><body>' +
+        '<div class="phead"><div class="pbrand"><div class="plogo">' + JE_LOGO_SVG + '</div>' +
+          '<div><div class="pname">HHM</div><div class="psub">نظام إدارة الأعمال</div></div></div>' +
+          '<div class="pdoc"><div class="ptitle">قيد يومية</div><div class="pno">' + (entry.no || '') + '</div>' +
+          '<div class="pmeta">التاريخ: ' + fmtDate(entry.date) + '</div><div class="pmeta">العملة: ' + entry.currency + '</div>' + attMeta + '</div></div>' +
+        '<div class="pinfo"><div><div class="lbl">الشرح</div><div class="val">' + esc(entry.description || '—') + '</div></div></div>' +
+        '<table><thead><tr><th style="width:30px">#</th><th>الحساب</th><th>البيان</th><th>م.تكلفة 1</th><th>م.تكلفة 2</th><th>مدين (ج.م)</th><th>دائن (ج.م)</th></tr></thead>' +
+        '<tbody>' + rows + '</tbody>' +
+        '<tfoot><tr><td colspan="5">الإجمالي</td><td>' + money(totals.debit) + '</td><td>' + money(totals.credit) + '</td></tr></tfoot></table>' +
+        '<div class="psign"><div>إعداد</div><div>مراجعة</div><div>اعتماد</div></div>' +
+        '<div class="pfoot">HHM · نظام إدارة الأعمال — تم الإنشاء بتاريخ ' + fmtDate(todayISO()) + '</div>' +
+        '<script>window.onload=function(){window.print();}<' + '/script>' +
+        '</body></html>';
+      w.document.write(htmlDoc);
+      w.document.close();
     }
 
     attach();
