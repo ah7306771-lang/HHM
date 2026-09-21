@@ -652,6 +652,178 @@
       .kpi-value { font-size: 18px; }
       .login-card { padding: 32px 22px 24px; }
     }
+
+    /* ================================================= */
+    /* SALES MODULE                                        */
+    /* ================================================= */
+    .stabs { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+    .stab {
+      padding: 10px 18px; border-radius: 10px; font-weight: 700; font-size: 13px;
+      background: #fff; border: 1.5px solid var(--border); color: var(--muted);
+      transition: all .15s;
+    }
+    .stab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .stab:hover:not(.active) { border-color: var(--primary); color: var(--text); }
+
+    .sbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+    .sbar-title { font-size: 15px; font-weight: 800; color: var(--muted); }
+
+    .stable-wrap { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; overflow-x: auto; }
+    .stable { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 560px; }
+    .stable th {
+      background: #f8fafc; color: var(--muted); font-weight: 700; text-align: right;
+      padding: 12px 16px; font-size: 12px; border-bottom: 1px solid var(--border); white-space: nowrap;
+    }
+    .stable td { padding: 13px 16px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .stable tbody tr:last-child td { border-bottom: none; }
+    .stable tbody tr { cursor: pointer; transition: background .12s; }
+    .stable tbody tr:hover { background: #f8fafc; }
+    .stable .num { font-variant-numeric: tabular-nums; }
+
+    .badge { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 800; white-space: nowrap; }
+    .badge-muted   { background: #f1f5f9; color: #64748b; }
+    .badge-info    { background: #dbeafe; color: #1d4ed8; }
+    .badge-success { background: #d1fae5; color: #047857; }
+    .badge-danger  { background: #fee2e2; color: #b91c1c; }
+    .badge-accent  { background: #fef3c7; color: #b45309; }
+    .badge-primary { background: #0f172a; color: #fbbf24; }
+
+    .sform-card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 24px; }
+    .sform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 18px; }
+    .sfield { margin-bottom: 18px; }
+    .sfield label { display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+    .sfield input, .sfield select, .sfield textarea {
+      width: 100%; padding: 11px 12px; border: 1.5px solid var(--border); border-radius: 10px;
+      font-size: 14px; background: #fff; color: var(--text); transition: border-color .15s, box-shadow .15s;
+    }
+    .sfield input:focus, .sfield select:focus, .sfield textarea:focus {
+      outline: none; border-color: var(--accent-2); box-shadow: 0 0 0 3px rgba(251,191,36,.15);
+    }
+    .sfield textarea { resize: vertical; min-height: 60px; }
+
+    .lines-wrap { overflow-x: auto; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 12px; }
+    .lines-table { width: 100%; border-collapse: collapse; min-width: 560px; }
+    .lines-table th {
+      background: #f8fafc; color: var(--muted); font-size: 11px; font-weight: 700;
+      padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--border);
+    }
+    .lines-table td { padding: 8px; border-bottom: 1px solid var(--border); }
+    .lines-table tr:last-child td { border-bottom: none; }
+    .lines-table input {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: 8px 9px; font-size: 13.5px; background: #fff;
+    }
+    .lines-table input:focus { outline: none; border-color: var(--accent-2); }
+    .lines-table input[type="number"] { text-align: center; }
+    .line-rm {
+      width: 30px; height: 30px; border-radius: 8px; background: rgba(239,68,68,.08);
+      color: var(--danger); display: grid; place-items: center; flex-shrink: 0;
+    }
+    .line-rm:hover { background: rgba(239,68,68,.16); }
+    .line-add {
+      margin: 10px 0 20px; padding: 9px 14px; border-radius: 9px; border: 1.5px dashed var(--border);
+      color: var(--muted); font-weight: 700; font-size: 13px; width: 100%;
+    }
+    .line-add:hover { border-color: var(--accent-2); color: var(--accent-2); }
+
+    .stotals { display: flex; justify-content: flex-end; margin-bottom: 20px; }
+    .stotals-box { min-width: 240px; }
+    .stotals-row { display: flex; justify-content: space-between; font-size: 13.5px; padding: 7px 0; color: var(--muted); }
+    .stotals-row.grand {
+      border-top: 1.5px solid var(--border); margin-top: 6px; padding-top: 12px;
+      color: var(--text); font-weight: 800; font-size: 16px;
+    }
+    .sform-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+
+    .sdoc-card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; }
+    .sdoc-head {
+      background: linear-gradient(135deg, #0f172a, #1e293b); color: #fff; padding: 22px 24px;
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; flex-wrap: wrap;
+    }
+    .sdoc-no { font-size: 20px; font-weight: 900; letter-spacing: .3px; }
+    .sdoc-meta { color: rgba(255,255,255,.6); font-size: 12.5px; margin-top: 4px; }
+    .sdoc-body { padding: 22px 24px; }
+    .sdoc-info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 20px; }
+    .sdoc-info-item .lbl { font-size: 11px; color: var(--muted); font-weight: 700; margin-bottom: 3px; }
+    .sdoc-info-item .val { font-size: 14px; font-weight: 700; }
+    .sdoc-progress { height: 6px; background: var(--border); border-radius: 999px; overflow: hidden; margin-top: 6px; }
+    .sdoc-progress-bar { height: 100%; background: linear-gradient(90deg, #fbbf24, #10b981); border-radius: 999px; transition: width .2s; }
+
+    .stimeline { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .stimeline .badge { font-size: 11.5px; padding: 6px 12px; }
+
+    .ssection-title { font-size: 13px; font-weight: 800; color: var(--muted); margin: 22px 0 10px; display: flex; align-items: center; gap: 8px; }
+    .sdoc-actions { display: flex; gap: 10px; flex-wrap: wrap; padding: 16px 24px; border-top: 1px solid var(--border); background: #f8fafc; }
+    .btn-sm { padding: 8px 14px; font-size: 12.5px; }
+    .btn-success { background: linear-gradient(135deg, #10b981, #059669); color: #fff; }
+    .btn-success:hover { filter: brightness(1.05); }
+    .btn-info2 { background: #eff6ff; color: #1d4ed8; border: 1.5px solid #bfdbfe; }
+    .btn-info2:hover { border-color: #1d4ed8; }
+    .btn-danger-o { background: #fff; color: var(--danger); border: 1.5px solid #fecaca; }
+    .btn-danger-o:hover { background: rgba(239,68,68,.06); }
+
+    .dispatch-card { border: 1.5px dashed var(--border); border-radius: 14px; padding: 18px; margin-top: 8px; background: #fafbfc; }
+    .dispatch-row {
+      display: grid; grid-template-columns: 1fr 100px 100px 110px; gap: 10px; align-items: center;
+      padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 13px;
+    }
+    .dispatch-row:last-of-type { border-bottom: none; }
+    .dispatch-row .rname { font-weight: 700; }
+    .dispatch-row .rem-note { font-size: 11px; color: var(--muted); }
+    .dispatch-row input[type=number] { width: 100%; padding: 8px; border: 1.5px solid var(--border); border-radius: 8px; text-align: center; }
+    .dispatch-row input.err { border-color: var(--danger); background: rgba(239,68,68,.06); }
+
+    .history-list { display: flex; flex-direction: column; gap: 8px; }
+    .history-item { display: flex; justify-content: space-between; align-items: center; padding: 11px 14px; background: #f8fafc; border-radius: 10px; font-size: 13px; }
+    .history-item b { font-weight: 800; }
+    .history-item .hmeta { color: var(--muted); font-size: 11.5px; }
+
+    @media (max-width: 640px) {
+      .sdoc-head { padding: 18px; }
+      .sdoc-body { padding: 18px; }
+      .dispatch-row { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* ================================================= */
+    /* ACCOUNTING MODULE                                    */
+    /* ================================================= */
+    .settings-card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 22px; margin-bottom: 18px; }
+    .settings-level-row {
+      display: grid; grid-template-columns: 90px 1fr 90px; gap: 10px; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px;
+    }
+    .settings-level-row:last-child { border-bottom: none; }
+    .settings-level-row input {
+      width: 100%; padding: 8px 10px; border: 1.5px solid var(--border); border-radius: 8px;
+      text-align: center; font-size: 13.5px;
+    }
+    .settings-level-row input:focus { outline: none; border-color: var(--accent-2); }
+    .sfield select {
+      width: 100%; padding: 11px 12px; border: 1.5px solid var(--border); border-radius: 10px;
+      font-size: 14px; background: #fff; color: var(--text);
+    }
+    .sfield select:focus { outline: none; border-color: var(--accent-2); }
+
+    .tree-wrap { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 10px 8px; overflow-x: auto; }
+    .tnode-row { display: flex; align-items: center; gap: 8px; padding: 9px 10px; border-radius: 8px; white-space: nowrap; }
+    .tnode-row:hover { background: #f8fafc; }
+    .texpand {
+      width: 22px; height: 22px; display: grid; place-items: center; color: var(--muted);
+      flex-shrink: 0; font-size: 11px; border-radius: 6px;
+    }
+    .texpand:hover { background: var(--border); }
+    .texpand.leaf { visibility: hidden; }
+    .tcode { font-weight: 800; font-variant-numeric: tabular-nums; color: var(--muted); font-size: 12.5px; min-width: 74px; flex-shrink: 0; }
+    .tname { font-weight: 700; font-size: 13.5px; flex: 1; min-width: 120px; }
+    .tbadge-leaf { font-size: 10px; background: #fef3c7; color: #b45309; padding: 2px 8px; border-radius: 999px; font-weight: 800; flex-shrink: 0; }
+    .tactions-row { display: flex; gap: 6px; flex-shrink: 0; }
+    .ticon-btn { width: 27px; height: 27px; border-radius: 8px; display: grid; place-items: center; font-size: 12px; flex-shrink: 0; }
+    .ticon-btn.add { background: rgba(16,185,129,.1); color: #059669; }
+    .ticon-btn.add:hover { background: rgba(16,185,129,.18); }
+    .ticon-btn.edit { background: rgba(59,130,246,.1); color: #1d4ed8; }
+    .ticon-btn.edit:hover { background: rgba(59,130,246,.18); }
+    .ticon-btn.del { background: rgba(239,68,68,.08); color: var(--danger); }
+    .ticon-btn.del:hover { background: rgba(239,68,68,.16); }
   </style>
 </head>
 <body>
@@ -807,6 +979,34 @@
           <button class="btn btn-outline" onclick="showPage('home')">⇦ رجوع للرئيسية</button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- SALES MODULE -->
+  <div id="pageSales" class="page">
+    <div class="container">
+      <div class="breadcrumb">
+        <a data-nav="home">الرئيسية</a>
+        <span>›</span>
+        <span>المبيعات</span>
+      </div>
+      <h1 class="page-title">💰 المبيعات</h1>
+      <p class="page-sub">عرض سعر ← اعتماد ← أمر بيع ← اعتماد مبيعات وحسابات ← صرف من المخزن ← فاتورة بيع</p>
+      <div id="salesContent"></div>
+    </div>
+  </div>
+
+  <!-- ACCOUNTING MODULE -->
+  <div id="pageAccounting" class="page">
+    <div class="container">
+      <div class="breadcrumb">
+        <a data-nav="home">الرئيسية</a>
+        <span>›</span>
+        <span>الحسابات</span>
+      </div>
+      <h1 class="page-title">📊 الحسابات العامة</h1>
+      <p class="page-sub">مؤشرات النظام ← دليل الحسابات ← مراكز التكلفة ← العملات — البيانات الأساسية لقيود اليومية</p>
+      <div id="accountingContent"></div>
     </div>
   </div>
 </div>
@@ -967,6 +1167,12 @@
     document.querySelectorAll('.page').forEach(p => p.classList.remove('show'));
     if(pageId === 'home'){
       $('pageHome').classList.add('show');
+    } else if(pageId === 'module' && moduleId === 'sales'){
+      $('pageSales').classList.add('show');
+      Sales.open();
+    } else if(pageId === 'module' && moduleId === 'accounting'){
+      $('pageAccounting').classList.add('show');
+      Accounting.open();
     } else if(pageId === 'module' && moduleId){
       const mod = MODULES.find(m => m.id === moduleId);
       if(!mod) return;
@@ -1026,6 +1232,1096 @@
       off.style.display = 'none';
     }
   }
+
+
+  // ============ SALES MODULE ============
+  const Sales = (function(){
+    const K_QO    = 'hhm_quotations';
+    const K_SO    = 'hhm_sales_orders';
+    const K_DSP   = 'hhm_dispatches';
+    const K_INV   = 'hhm_invoices';
+    const K_SEQ   = 'hhm_seq';
+    const K_ITEMS = 'hhm_items_quick';
+
+    function loadArr(k){ try{ return JSON.parse(localStorage.getItem(k) || '[]'); }catch(e){ return []; } }
+    function saveArr(k, a){ try{ localStorage.setItem(k, JSON.stringify(a)); }catch(e){} }
+    function uid(){ return 'id' + Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+    function todayISO(){ return new Date().toISOString().slice(0,10); }
+
+    function fmtDate(iso){
+      if(!iso) return '—';
+      const d = new Date(iso + 'T00:00:00');
+      if(isNaN(d.getTime())) return iso;
+      const dd = String(d.getDate()).padStart(2,'0');
+      const mm = String(d.getMonth()+1).padStart(2,'0');
+      return dd + '/' + mm + '/' + d.getFullYear();
+    }
+    function money(n){
+      n = Number(n) || 0;
+      const parts = n.toFixed(2).split('.');
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      return parts.join('.') + ' ج.م';
+    }
+    function nextNo(type){
+      let seq = {};
+      try{ seq = JSON.parse(localStorage.getItem(K_SEQ) || '{}'); }catch(e){ seq = {}; }
+      const year = new Date().getFullYear();
+      const k = type + '_' + year;
+      seq[k] = (seq[k] || 0) + 1;
+      localStorage.setItem(K_SEQ, JSON.stringify(seq));
+      return type + '-' + year + '-' + String(seq[k]).padStart(4, '0');
+    }
+    function saveItemName(name){
+      if(!name) return;
+      const items = loadArr(K_ITEMS);
+      if(items.indexOf(name) === -1){ items.unshift(name); saveArr(K_ITEMS, items.slice(0, 60)); }
+    }
+    function lineTotal(l){ return (Number(l.qty)||0) * (Number(l.price)||0); }
+    function docTotal(lines){ return (lines||[]).reduce((s,l) => s + lineTotal(l), 0); }
+    function esc(s){
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+      });
+    }
+    function val(id){ const el = document.getElementById(id); return el ? el.value.trim() : ''; }
+    function toast(msg){ alert(msg); }
+
+    const QO_STATUS = {
+      draft:     { t: 'مسودة',            c: 'muted' },
+      approved:  { t: 'معتمد',             c: 'info' },
+      converted: { t: 'محوّل لأمر بيع',    c: 'success' },
+      rejected:  { t: 'مرفوض',             c: 'danger' }
+    };
+    const SO_STATUS = {
+      draft:            { t: 'مسودة',              c: 'muted' },
+      sales_approved:   { t: 'معتمد مبيعات',        c: 'info' },
+      finance_approved: { t: 'جاهز للصرف',          c: 'accent' },
+      partial:          { t: 'صرف جزئي',            c: 'accent' },
+      dispatched:       { t: 'مصروف بالكامل',       c: 'success' },
+      invoiced:         { t: 'مفوتر بالكامل',       c: 'primary' },
+      closed:           { t: 'مغلق',                c: 'muted' }
+    };
+
+    let st = { tab: 'quotations', mode: 'list', id: null, _draft: null };
+
+    function open(){
+      st = { tab: 'quotations', mode: 'list', id: null, _draft: null };
+      render();
+    }
+
+    // ---------- RENDER ROOT ----------
+    function render(){
+      const root = document.getElementById('salesContent');
+      if(!root) return;
+      let html = '<div class="stabs">' +
+        tabBtn('quotations', 'عروض الأسعار') +
+        tabBtn('orders', 'أوامر البيع') +
+        tabBtn('invoices', 'فواتير البيع') +
+      '</div>';
+
+      if(st.mode === 'list')        html += renderList();
+      else if(st.mode === 'qoForm') html += renderQoForm();
+      else if(st.mode === 'qoView') html += renderQoView();
+      else if(st.mode === 'soView') html += renderSoView();
+      else if(st.mode === 'invView')html += renderInvView();
+
+      root.innerHTML = html;
+      bindLineEvents();
+    }
+
+    function tabBtn(id, label){
+      const active = (st.tab === id && st.mode === 'list') ? ' active' : '';
+      return '<button class="stab' + active + '" data-action="tab" data-tab="' + id + '">' + label + '</button>';
+    }
+
+    // ---------- LIST VIEWS ----------
+    function renderList(){
+      if(st.tab === 'quotations') return renderQoList();
+      if(st.tab === 'orders') return renderSoList();
+      return renderInvList();
+    }
+
+    function renderQoList(){
+      const rows = loadArr(K_QO).slice().reverse();
+      let body = '<div class="sbar"><div class="sbar-title">' + rows.length + ' عرض سعر</div>' +
+        '<button class="btn btn-accent" data-action="qoNew">+ عرض سعر جديد</button></div>';
+      if(!rows.length){ return body + emptyBlock('📝', 'مفيش عروض أسعار لسه', 'ابدأ بإنشاء أول عرض سعر لعميلك.'); }
+      body += '<div class="stable-wrap"><table class="stable"><thead><tr>' +
+        '<th>الرقم</th><th>التاريخ</th><th>العميل</th><th>الإجمالي</th><th>الحالة</th></tr></thead><tbody>';
+      rows.forEach(function(q){
+        const s = QO_STATUS[q.status] || QO_STATUS.draft;
+        body += '<tr data-action="qoOpen" data-id="' + q.id + '">' +
+          '<td><b>' + q.no + '</b></td><td>' + fmtDate(q.date) + '</td>' +
+          '<td>' + esc(q.customer || '—') + '</td>' +
+          '<td class="num">' + money(docTotal(q.lines)) + '</td>' +
+          '<td><span class="badge badge-' + s.c + '">' + s.t + '</span></td></tr>';
+      });
+      return body + '</tbody></table></div>';
+    }
+
+    function renderSoList(){
+      const rows = loadArr(K_SO).slice().reverse();
+      let body = '<div class="sbar"><div class="sbar-title">' + rows.length + ' أمر بيع</div></div>';
+      if(!rows.length){ return body + emptyBlock('🧾', 'مفيش أوامر بيع لسه', 'أوامر البيع بتتولد تلقائياً بعد اعتماد عرض السعر.'); }
+      body += '<div class="stable-wrap"><table class="stable"><thead><tr>' +
+        '<th>الرقم</th><th>التاريخ</th><th>العميل</th><th>الإجمالي</th><th>الحالة</th></tr></thead><tbody>';
+      rows.forEach(function(o){
+        const s = SO_STATUS[o.status] || SO_STATUS.draft;
+        body += '<tr data-action="soOpen" data-id="' + o.id + '">' +
+          '<td><b>' + o.no + '</b></td><td>' + fmtDate(o.date) + '</td>' +
+          '<td>' + esc(o.customer || '—') + '</td>' +
+          '<td class="num">' + money(docTotal(o.lines)) + '</td>' +
+          '<td><span class="badge badge-' + s.c + '">' + s.t + '</span></td></tr>';
+      });
+      return body + '</tbody></table></div>';
+    }
+
+    function renderInvList(){
+      const rows = loadArr(K_INV).slice().reverse();
+      let body = '<div class="sbar"><div class="sbar-title">' + rows.length + ' فاتورة بيع</div></div>';
+      if(!rows.length){ return body + emptyBlock('🧮', 'مفيش فواتير لسه', 'الفواتير بتتولد من أوامر البيع بعد الصرف من المخزن.'); }
+      body += '<div class="stable-wrap"><table class="stable"><thead><tr>' +
+        '<th>الرقم</th><th>التاريخ</th><th>العميل</th><th>مرتبطة بـ</th><th>الإجمالي</th></tr></thead><tbody>';
+      rows.forEach(function(v){
+        body += '<tr data-action="invOpen" data-id="' + v.id + '">' +
+          '<td><b>' + v.no + '</b></td><td>' + fmtDate(v.date) + '</td>' +
+          '<td>' + esc(v.customer || '—') + '</td><td>' + esc(v.soNo || '—') + '</td>' +
+          '<td class="num">' + money(docTotal(v.lines)) + '</td></tr>';
+      });
+      return body + '</tbody></table></div>';
+    }
+
+    function emptyBlock(icon, title, desc){
+      return '<div class="empty-state"><div class="empty-icon">' + icon + '</div>' +
+        '<h3 class="empty-title">' + title + '</h3><p class="empty-desc">' + desc + '</p></div>';
+    }
+
+    // ---------- QUOTATION FORM ----------
+    function blankLine(){ return { id: uid(), item: '', qty: 1, price: 0 }; }
+
+    function renderQoForm(){
+      let doc;
+      if(st._draft && st._draft._forId === (st.id || 'new')){
+        doc = st._draft;
+      } else {
+        const editing = st.id ? loadArr(K_QO).find(function(q){ return q.id === st.id; }) : null;
+        doc = editing ? JSON.parse(JSON.stringify(editing)) :
+          { id: uid(), no: null, date: todayISO(), customer: '', phone: '', notes: '', status: 'draft', lines: [blankLine()] };
+        doc._forId = st.id || 'new';
+        st._draft = doc;
+      }
+
+      let html = '<div class="sform-card">';
+      html += '<div class="sbar"><div class="sbar-title">' + (doc.no ? 'تعديل عرض سعر' : 'عرض سعر جديد') + '</div>' +
+        '<button class="btn btn-outline" data-action="back">⇦ رجوع للقائمة</button></div>';
+
+      html += '<div class="sform-grid">' +
+        sfield('اسم العميل', 'text', 'qoCustomer', doc.customer, 'اسم العميل') +
+        sfield('رقم التليفون', 'text', 'qoPhone', doc.phone, 'اختياري') +
+        sfield('التاريخ', 'date', 'qoDate', doc.date, '') +
+      '</div>';
+
+      html += '<div class="sfield"><label>ملاحظات</label>' +
+        '<textarea id="qoNotes" placeholder="ملاحظات إضافية (اختياري)">' + esc(doc.notes) + '</textarea></div>';
+
+      html += linesTableHTML(doc.lines);
+      html += totalsHTML(doc.lines);
+
+      html += '<div class="sform-actions">' +
+        '<button class="btn btn-outline" data-action="qoSaveDraft">حفظ كمسودة</button>' +
+        '<button class="btn btn-accent" data-action="qoSaveApprove">حفظ واعتماد</button>' +
+      '</div></div>';
+      return html;
+    }
+
+    function sfield(label, type, id, v, placeholder){
+      return '<div class="sfield"><label>' + label + '</label>' +
+        '<input type="' + type + '" id="' + id + '" value="' + esc(v) + '" placeholder="' + esc(placeholder||'') + '"></div>';
+    }
+
+    function linesTableHTML(lines){
+      let html = '<div class="lines-wrap"><table class="lines-table"><thead><tr>' +
+        '<th style="min-width:200px">الصنف / الوصف</th><th style="width:90px">الكمية</th>' +
+        '<th style="width:120px">سعر الوحدة</th><th style="width:120px">الإجمالي</th><th style="width:40px"></th>' +
+      '</tr></thead><tbody id="linesBody">';
+      lines.forEach(function(l){
+        html += '<tr data-line="' + l.id + '">' +
+          '<td><input list="itemsList" class="ln-item" value="' + esc(l.item) + '" placeholder="اسم الصنف"></td>' +
+          '<td><input type="number" min="0" step="any" class="ln-qty" value="' + (l.qty != null ? l.qty : 1) + '"></td>' +
+          '<td><input type="number" min="0" step="any" class="ln-price" value="' + (l.price != null ? l.price : 0) + '"></td>' +
+          '<td class="num ln-total">' + money(lineTotal(l)) + '</td>' +
+          '<td>' + (lines.length > 1 ? '<button class="line-rm" data-action="lineRemove" data-line="' + l.id + '">✕</button>' : '') + '</td>' +
+        '</tr>';
+      });
+      html += '</tbody></table></div>';
+      html += '<datalist id="itemsList">' + loadArr(K_ITEMS).map(function(n){ return '<option value="' + esc(n) + '">'; }).join('') + '</datalist>';
+      html += '<button class="line-add" data-action="lineAdd">+ إضافة صنف</button>';
+      return html;
+    }
+
+    function totalsHTML(lines){
+      return '<div class="stotals"><div class="stotals-box">' +
+        '<div class="stotals-row grand"><span>الإجمالي</span><span>' + money(docTotal(lines)) + '</span></div>' +
+      '</div></div>';
+    }
+
+    function readLinesFromDOM(){
+      const rows = document.querySelectorAll('#linesBody tr');
+      const lines = [];
+      rows.forEach(function(r){
+        const id = r.getAttribute('data-line');
+        const item = r.querySelector('.ln-item').value.trim();
+        const qty = parseFloat(r.querySelector('.ln-qty').value) || 0;
+        const price = parseFloat(r.querySelector('.ln-price').value) || 0;
+        if(item || qty || price) lines.push({ id: id, item: item, qty: qty, price: price });
+      });
+      return lines;
+    }
+
+    function bindLineEvents(){
+      const body = document.getElementById('linesBody');
+      if(!body) return;
+      body.addEventListener('input', function(e){
+        const row = e.target.closest('tr');
+        if(!row) return;
+        const qty = parseFloat(row.querySelector('.ln-qty').value) || 0;
+        const price = parseFloat(row.querySelector('.ln-price').value) || 0;
+        row.querySelector('.ln-total').textContent = money(qty * price);
+        const total = readLinesFromDOM().reduce(function(s,l){ return s + (l.qty*l.price); }, 0);
+        const grand = document.querySelector('.stotals-row.grand span:last-child');
+        if(grand) grand.textContent = money(total);
+      });
+    }
+
+    function snapshotFormFields(doc){
+      doc.customer = val('qoCustomer');
+      doc.phone = val('qoPhone');
+      doc.date = val('qoDate') || todayISO();
+      doc.notes = val('qoNotes');
+    }
+
+    // ---------- QUOTATION SAVE / ACTIONS ----------
+    function qoSave(andApprove){
+      const doc = st._draft;
+      snapshotFormFields(doc);
+      doc.lines = readLinesFromDOM();
+      if(!doc.lines.length){ toast('أضف صنف واحد على الأقل قبل الحفظ.'); return null; }
+      if(!doc.customer){ toast('اكتب اسم العميل.'); return null; }
+      doc.lines.forEach(function(l){ saveItemName(l.item); });
+      const arr = loadArr(K_QO);
+      const idx = arr.findIndex(function(q){ return q.id === doc.id; });
+      if(!doc.no) doc.no = nextNo('QO');
+      if(andApprove){ doc.status = 'approved'; doc.approvedAt = Date.now(); }
+      doc.updatedAt = Date.now();
+      delete doc._forId;
+      if(idx >= 0) arr[idx] = doc; else { doc.createdAt = Date.now(); arr.push(doc); }
+      saveArr(K_QO, arr);
+      return doc;
+    }
+
+    function qoApprove(id){
+      const arr = loadArr(K_QO);
+      const q = arr.find(function(x){ return x.id === id; });
+      if(!q) return;
+      q.status = 'approved';
+      q.approvedAt = Date.now();
+      saveArr(K_QO, arr);
+      st.mode = 'qoView'; st.id = id; render();
+    }
+
+    function qoReject(id){
+      if(!confirm('تأكيد رفض عرض السعر؟')) return;
+      const arr = loadArr(K_QO);
+      const q = arr.find(function(x){ return x.id === id; });
+      if(!q) return;
+      q.status = 'rejected';
+      saveArr(K_QO, arr);
+      st.mode = 'qoView'; st.id = id; render();
+    }
+
+    function qoConvertToSO(id){
+      const arr = loadArr(K_QO);
+      const q = arr.find(function(x){ return x.id === id; });
+      if(!q || q.status !== 'approved'){ toast('لازم اعتماد عرض السعر أولاً.'); return; }
+      const soArr = loadArr(K_SO);
+      const so = {
+        id: uid(), no: nextNo('SO'), date: todayISO(),
+        customer: q.customer, phone: q.phone, notes: q.notes,
+        quotationNo: q.no, quotationId: q.id,
+        status: 'draft',
+        lines: q.lines.map(function(l){ return { id: uid(), item: l.item, qty: l.qty, price: l.price, dispatchedQty: 0, invoicedQty: 0 }; }),
+        createdAt: Date.now()
+      };
+      soArr.push(so);
+      saveArr(K_SO, soArr);
+      q.status = 'converted'; q.soNo = so.no; q.soId = so.id;
+      saveArr(K_QO, arr);
+      st.tab = 'orders'; st.mode = 'soView'; st.id = so.id;
+      render();
+    }
+
+    // ---------- QUOTATION VIEW ----------
+    function renderQoView(){
+      const q = loadArr(K_QO).find(function(x){ return x.id === st.id; });
+      if(!q) return emptyBlock('❓', 'العنصر غير موجود', '');
+      const s = QO_STATUS[q.status] || QO_STATUS.draft;
+      let html = '<div class="sdoc-card">';
+      html += '<div class="sdoc-head"><div><div class="sdoc-no">' + q.no + '</div>' +
+        '<div class="sdoc-meta">عرض سعر · ' + fmtDate(q.date) + '</div></div>' +
+        '<span class="badge badge-' + s.c + '">' + s.t + '</span></div>';
+
+      html += '<div class="sdoc-body">';
+      html += '<div class="sdoc-info-grid">' +
+        infoItem('العميل', q.customer || '—') +
+        infoItem('التليفون', q.phone || '—') +
+        infoItem('محوّل لأمر بيع', q.soNo || '—') +
+      '</div>';
+      if(q.notes) html += '<div class="sfield"><label>ملاحظات</label><div>' + esc(q.notes) + '</div></div>';
+      html += docLinesReadonly(q.lines);
+      html += totalsHTML(q.lines);
+      html += '</div>';
+
+      html += '<div class="sdoc-actions">';
+      html += '<button class="btn btn-outline btn-sm" data-action="back">⇦ القائمة</button>';
+      html += '<button class="btn btn-info2 btn-sm" data-action="printQo" data-id="' + q.id + '">🖨️ طباعة</button>';
+      if(q.status === 'draft'){
+        html += '<button class="btn btn-outline btn-sm" data-action="qoEdit" data-id="' + q.id + '">تعديل</button>';
+        html += '<button class="btn btn-success btn-sm" data-action="qoApprove" data-id="' + q.id + '">✓ اعتماد</button>';
+        html += '<button class="btn btn-danger-o btn-sm" data-action="qoReject" data-id="' + q.id + '">رفض</button>';
+      } else if(q.status === 'approved'){
+        html += '<button class="btn btn-accent btn-sm" data-action="qoConvert" data-id="' + q.id + '">تحويل لأمر بيع ←</button>';
+      }
+      html += '</div></div>';
+      return html;
+    }
+
+    function infoItem(label, v){
+      return '<div class="sdoc-info-item"><div class="lbl">' + label + '</div><div class="val">' + esc(v) + '</div></div>';
+    }
+    function docLinesReadonly(lines){
+      let html = '<div class="lines-wrap"><table class="lines-table"><thead><tr>' +
+        '<th>الصنف</th><th style="width:90px">الكمية</th><th style="width:120px">السعر</th><th style="width:120px">الإجمالي</th>' +
+      '</tr></thead><tbody>';
+      (lines||[]).forEach(function(l){
+        html += '<tr><td>' + esc(l.item) + '</td><td class="num">' + l.qty + '</td>' +
+          '<td class="num">' + money(l.price) + '</td><td class="num">' + money(lineTotal(l)) + '</td></tr>';
+      });
+      return html + '</tbody></table></div>';
+    }
+
+    // ---------- SALES ORDER VIEW ----------
+    function renderSoView(){
+      const o = loadArr(K_SO).find(function(x){ return x.id === st.id; });
+      if(!o) return emptyBlock('❓', 'العنصر غير موجود', '');
+      const s = SO_STATUS[o.status] || SO_STATUS.draft;
+      const totalQty = o.lines.reduce(function(s,l){ return s+Number(l.qty||0); },0);
+      const dispQty = o.lines.reduce(function(s,l){ return s+Number(l.dispatchedQty||0); },0);
+      const pct = totalQty ? Math.round((dispQty/totalQty)*100) : 0;
+
+      let html = '<div class="sdoc-card">';
+      html += '<div class="sdoc-head"><div><div class="sdoc-no">' + o.no + '</div>' +
+        '<div class="sdoc-meta">أمر بيع · ' + fmtDate(o.date) + (o.quotationNo ? ' · من ' + o.quotationNo : '') + '</div></div>' +
+        '<span class="badge badge-' + s.c + '">' + s.t + '</span></div>';
+
+      html += '<div class="sdoc-body">';
+      html += '<div class="sdoc-info-grid">' +
+        infoItem('العميل', o.customer || '—') +
+        infoItem('التليفون', o.phone || '—') +
+        infoItem('الإجمالي', money(docTotal(o.lines))) +
+      '</div>';
+
+      html += '<div class="ssection-title">📦 نسبة الصرف من المخزن — ' + pct + '%</div>' +
+        '<div class="sdoc-progress"><div class="sdoc-progress-bar" style="width:' + pct + '%"></div></div>';
+
+      html += '<div class="ssection-title">أصناف الأمر</div>';
+      html += '<div class="lines-wrap"><table class="lines-table"><thead><tr>' +
+        '<th>الصنف</th><th style="width:80px">مطلوب</th><th style="width:80px">اتصرف</th><th style="width:80px">الباقي</th><th style="width:100px">السعر</th>' +
+      '</tr></thead><tbody>';
+      o.lines.forEach(function(l){
+        const rem = Number(l.qty||0) - Number(l.dispatchedQty||0);
+        html += '<tr><td>' + esc(l.item) + '</td><td class="num">' + l.qty + '</td>' +
+          '<td class="num">' + (l.dispatchedQty||0) + '</td><td class="num"><b>' + rem + '</b></td>' +
+          '<td class="num">' + money(l.price) + '</td></tr>';
+      });
+      html += '</tbody></table></div>';
+
+      html += '<div class="ssection-title">مسار الاعتماد</div><div class="stimeline">' +
+        '<span class="badge badge-' + (o.salesApprovedAt ? 'success' : 'muted') + '">' +
+          (o.salesApprovedAt ? '✓ اعتماد المبيعات — ' + fmtDate(new Date(o.salesApprovedAt).toISOString().slice(0,10)) : 'بانتظار اعتماد المبيعات') + '</span>' +
+        '<span class="badge badge-' + (o.financeApprovedAt ? 'success' : 'muted') + '">' +
+          (o.financeApprovedAt ? '✓ اعتماد الحسابات — ' + fmtDate(new Date(o.financeApprovedAt).toISOString().slice(0,10)) : 'بانتظار اعتماد الحسابات') + '</span>' +
+      '</div>';
+
+      const canDispatch = (o.status === 'finance_approved' || o.status === 'partial') && dispQty < totalQty;
+      if(canDispatch){
+        html += '<div class="ssection-title">🚚 صرف من المخزن</div>' + renderDispatchForm(o);
+      }
+
+      const invoiceable = o.lines.some(function(l){ return (Number(l.dispatchedQty||0) - Number(l.invoicedQty||0)) > 0; });
+      if(invoiceable){
+        html += '<div class="ssection-title">🧮 تحويل لفاتورة بيع</div>' + renderInvoiceForm(o);
+      }
+
+      const dsp = loadArr(K_DSP).filter(function(d){ return d.soId === o.id; });
+      const inv = loadArr(K_INV).filter(function(v){ return v.soId === o.id; });
+      if(dsp.length || inv.length){
+        html += '<div class="ssection-title">📜 السجل</div><div class="history-list">';
+        dsp.slice().reverse().forEach(function(d){
+          html += '<div class="history-item"><span>🚚 إذن صرف <b>' + d.no + '</b></span>' +
+            '<span class="hmeta">' + fmtDate(d.date) + ' — <a data-action="printDsp" data-id="' + d.id + '" style="color:var(--info);cursor:pointer;text-decoration:underline">طباعة</a></span></div>';
+        });
+        inv.slice().reverse().forEach(function(v){
+          html += '<div class="history-item"><span>🧮 فاتورة <b>' + v.no + '</b></span>' +
+            '<span class="hmeta">' + fmtDate(v.date) + ' — <a data-action="printInv" data-id="' + v.id + '" style="color:var(--info);cursor:pointer;text-decoration:underline">طباعة</a></span></div>';
+        });
+        html += '</div>';
+      }
+
+      html += '</div>'; // sdoc-body
+
+      html += '<div class="sdoc-actions">';
+      html += '<button class="btn btn-outline btn-sm" data-action="back">⇦ القائمة</button>';
+      html += '<button class="btn btn-info2 btn-sm" data-action="printSo" data-id="' + o.id + '">🖨️ طباعة أمر البيع</button>';
+      if(o.status === 'draft'){
+        html += '<button class="btn btn-success btn-sm" data-action="soApproveSales" data-id="' + o.id + '">✓ اعتماد المبيعات</button>';
+      }
+      if(o.status === 'sales_approved'){
+        html += '<button class="btn btn-success btn-sm" data-action="soApproveFinance" data-id="' + o.id + '">✓ اعتماد الحسابات</button>';
+      }
+      html += '</div></div>';
+      return html;
+    }
+
+    function renderDispatchForm(o){
+      let html = '<div class="dispatch-card"><div id="dispatchRows">';
+      o.lines.forEach(function(l){
+        const rem = Number(l.qty||0) - Number(l.dispatchedQty||0);
+        html += '<div class="dispatch-row" data-line="' + l.id + '" data-rem="' + rem + '">' +
+          '<div><div class="rname">' + esc(l.item) + '</div><div class="rem-note">الباقي: ' + rem + '</div></div><div></div>' +
+          '<div><input type="number" class="dsp-qty" min="0" max="' + rem + '" step="any" value="0"' + (rem<=0?' disabled':'') + '></div><div></div></div>';
+      });
+      html += '</div><div id="dispatchErr" style="color:var(--danger);font-size:12.5px;margin-top:6px;display:none"></div>';
+      html += '<div style="margin-top:12px;text-align:left"><button class="btn btn-accent btn-sm" data-action="dispatchSave" data-id="' + o.id + '">تأكيد الصرف</button></div></div>';
+      return html;
+    }
+
+    function renderInvoiceForm(o){
+      let html = '<div class="dispatch-card"><div id="invoiceRows">';
+      o.lines.forEach(function(l){
+        const avail = Number(l.dispatchedQty||0) - Number(l.invoicedQty||0);
+        if(avail <= 0) return;
+        html += '<div class="dispatch-row" data-line="' + l.id + '" data-rem="' + avail + '">' +
+          '<div><div class="rname">' + esc(l.item) + '</div><div class="rem-note">قابل للفوترة: ' + avail + '</div></div><div></div>' +
+          '<div><input type="number" class="inv-qty" min="0" max="' + avail + '" step="any" value="' + avail + '"></div><div></div></div>';
+      });
+      html += '</div><div id="invoiceErr" style="color:var(--danger);font-size:12.5px;margin-top:6px;display:none"></div>';
+      html += '<div style="margin-top:12px;text-align:left"><button class="btn btn-accent btn-sm" data-action="invoiceSave" data-id="' + o.id + '">إنشاء فاتورة بيع</button></div></div>';
+      return html;
+    }
+
+    // ---------- DISPATCH SAVE (never negative, never over remaining) ----------
+    function dispatchSave(soId){
+      const soArr = loadArr(K_SO);
+      const o = soArr.find(function(x){ return x.id === soId; });
+      if(!o) return;
+      const rows = document.querySelectorAll('#dispatchRows .dispatch-row');
+      const picks = [];
+      let hasErr = false;
+      rows.forEach(function(r){
+        const lineId = r.getAttribute('data-line');
+        const rem = Number(r.getAttribute('data-rem'));
+        const input = r.querySelector('.dsp-qty');
+        let qty = parseFloat(input.value);
+        if(isNaN(qty)) qty = 0;
+        input.classList.remove('err');
+        if(qty < 0 || qty > rem){ input.classList.add('err'); hasErr = true; return; }
+        if(qty > 0) picks.push({ lineId: lineId, qty: qty });
+      });
+      const errEl = document.getElementById('dispatchErr');
+      if(hasErr){ errEl.textContent = 'فيه كمية أكبر من الباقي أو بالسالب — راجع الحقول المظللة بالأحمر.'; errEl.style.display = 'block'; return; }
+      if(!picks.length){ errEl.textContent = 'أدخل كمية صرف لصنف واحد على الأقل.'; errEl.style.display = 'block'; return; }
+      errEl.style.display = 'none';
+
+      const dspLines = [];
+      picks.forEach(function(p){
+        const line = o.lines.find(function(l){ return l.id === p.lineId; });
+        if(!line) return;
+        const remaining = Number(line.qty||0) - Number(line.dispatchedQty||0);
+        const safeQty = Math.max(0, Math.min(p.qty, remaining)); // hard guard: never negative, never over remaining
+        line.dispatchedQty = Number(line.dispatchedQty||0) + safeQty;
+        dspLines.push({ item: line.item, qty: safeQty, price: line.price });
+      });
+
+      const dspArr = loadArr(K_DSP);
+      const dsp = { id: uid(), no: nextNo('DSP'), date: todayISO(), soId: o.id, soNo: o.no, customer: o.customer, lines: dspLines, createdAt: Date.now() };
+      dspArr.push(dsp);
+      saveArr(K_DSP, dspArr);
+
+      const totalQty = o.lines.reduce(function(s,l){ return s+Number(l.qty||0); },0);
+      const dispQty = o.lines.reduce(function(s,l){ return s+Number(l.dispatchedQty||0); },0);
+      o.status = (dispQty >= totalQty) ? 'dispatched' : 'partial';
+      saveArr(K_SO, soArr);
+
+      render();
+      printDoc('dispatch', dsp);
+    }
+
+    // ---------- INVOICE SAVE (never negative, never over dispatched-not-invoiced) ----------
+    function invoiceSave(soId){
+      const soArr = loadArr(K_SO);
+      const o = soArr.find(function(x){ return x.id === soId; });
+      if(!o) return;
+      const rows = document.querySelectorAll('#invoiceRows .dispatch-row');
+      const picks = [];
+      let hasErr = false;
+      rows.forEach(function(r){
+        const lineId = r.getAttribute('data-line');
+        const avail = Number(r.getAttribute('data-rem'));
+        const input = r.querySelector('.inv-qty');
+        let qty = parseFloat(input.value);
+        if(isNaN(qty)) qty = 0;
+        input.classList.remove('err');
+        if(qty < 0 || qty > avail){ input.classList.add('err'); hasErr = true; return; }
+        if(qty > 0) picks.push({ lineId: lineId, qty: qty });
+      });
+      const errEl = document.getElementById('invoiceErr');
+      if(hasErr){ errEl.textContent = 'فيه كمية أكبر من المتاح للفوترة أو بالسالب.'; errEl.style.display = 'block'; return; }
+      if(!picks.length){ errEl.textContent = 'أدخل كمية فوترة لصنف واحد على الأقل.'; errEl.style.display = 'block'; return; }
+      errEl.style.display = 'none';
+
+      const invLines = [];
+      picks.forEach(function(p){
+        const line = o.lines.find(function(l){ return l.id === p.lineId; });
+        if(!line) return;
+        const avail = Number(line.dispatchedQty||0) - Number(line.invoicedQty||0);
+        const safeQty = Math.max(0, Math.min(p.qty, avail));
+        line.invoicedQty = Number(line.invoicedQty||0) + safeQty;
+        invLines.push({ item: line.item, qty: safeQty, price: line.price });
+      });
+
+      const invArr = loadArr(K_INV);
+      const inv = { id: uid(), no: nextNo('INV'), date: todayISO(), soId: o.id, soNo: o.no, customer: o.customer, lines: invLines, createdAt: Date.now() };
+      invArr.push(inv);
+      saveArr(K_INV, invArr);
+
+      const totalQty = o.lines.reduce(function(s,l){ return s+Number(l.qty||0); },0);
+      const invQty = o.lines.reduce(function(s,l){ return s+Number(l.invoicedQty||0); },0);
+      if(invQty >= totalQty) o.status = 'invoiced';
+      saveArr(K_SO, soArr);
+
+      render();
+      printDoc('invoice', inv);
+    }
+
+    // ---------- APPROVALS ----------
+    function soApproveSales(id){
+      const arr = loadArr(K_SO);
+      const o = arr.find(function(x){ return x.id === id; });
+      if(!o) return;
+      o.status = 'sales_approved'; o.salesApprovedAt = Date.now();
+      saveArr(K_SO, arr); render();
+    }
+    function soApproveFinance(id){
+      const arr = loadArr(K_SO);
+      const o = arr.find(function(x){ return x.id === id; });
+      if(!o) return;
+      o.status = 'finance_approved'; o.financeApprovedAt = Date.now();
+      saveArr(K_SO, arr); render();
+    }
+
+    // ---------- INVOICE VIEW ----------
+    function renderInvView(){
+      const v = loadArr(K_INV).find(function(x){ return x.id === st.id; });
+      if(!v) return emptyBlock('❓', 'العنصر غير موجود', '');
+      let html = '<div class="sdoc-card">';
+      html += '<div class="sdoc-head"><div><div class="sdoc-no">' + v.no + '</div>' +
+        '<div class="sdoc-meta">فاتورة بيع · ' + fmtDate(v.date) + ' · أمر بيع ' + (v.soNo||'—') + '</div></div>' +
+        '<span class="badge badge-primary">مفوترة</span></div>';
+      html += '<div class="sdoc-body"><div class="sdoc-info-grid">' + infoItem('العميل', v.customer || '—') + '</div>';
+      html += docLinesReadonly(v.lines) + totalsHTML(v.lines) + '</div>';
+      html += '<div class="sdoc-actions">' +
+        '<button class="btn btn-outline btn-sm" data-action="back">⇦ القائمة</button>' +
+        '<button class="btn btn-info2 btn-sm" data-action="printInv" data-id="' + v.id + '">🖨️ طباعة</button>' +
+      '</div></div>';
+      return html;
+    }
+
+    // ---------- PRINT ----------
+    const LOGO_SVG = '<svg viewBox="0 0 128 128" fill="none" stroke="#0f172a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M32 34v60M58 34v60M32 64h26"/><path d="M74 94V34l11 22 11-22v60"/></svg>';
+
+    function printDoc(type, doc){
+      const titles = { quotation:'عرض سعر', order:'أمر بيع', dispatch:'إذن صرف من المخزن', invoice:'فاتورة بيع' };
+      const title = titles[type] || 'مستند';
+      const w = window.open('', '_blank');
+      if(!w){ toast('المتصفح منع فتح نافذة الطباعة — اسمح بالنوافذ المنبثقة لهذا الموقع.'); return; }
+      const lines = doc.lines || [];
+      const total = docTotal(lines);
+      let rows = '';
+      lines.forEach(function(l,i){
+        rows += '<tr><td>' + (i+1) + '</td><td>' + esc(l.item) + '</td>' +
+          '<td>' + l.qty + '</td><td>' + money(l.price) + '</td><td>' + money(lineTotal(l)) + '</td></tr>';
+      });
+      const extraMeta = (type === 'order' && doc.quotationNo) ? ('<div class="pmeta">مرجع: ' + doc.quotationNo + '</div>') : '';
+      const soRef = ((type === 'dispatch' || type === 'invoice') && doc.soNo) ? ('<div class="pmeta">أمر البيع: ' + doc.soNo + '</div>') : '';
+
+      const htmlDoc =
+        '<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">' +
+        '<title>' + title + ' ' + (doc.no||'') + '</title>' +
+        '<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">' +
+        '<style>' +
+          '*{box-sizing:border-box;margin:0;padding:0}' +
+          'body{font-family:Cairo,system-ui,sans-serif;color:#0f172a;padding:36px;max-width:820px;margin:0 auto}' +
+          '.phead{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #fbbf24;padding-bottom:18px;margin-bottom:22px}' +
+          '.pbrand{display:flex;align-items:center;gap:12px}' +
+          '.plogo{width:52px;height:52px;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:14px;display:grid;place-items:center}' +
+          '.plogo svg{width:32px;height:32px}' +
+          '.pname{font-size:20px;font-weight:900}' +
+          '.psub{font-size:11px;color:#64748b}' +
+          '.pdoc{text-align:left}' +
+          '.ptitle{font-size:17px;font-weight:800;background:#0f172a;color:#fbbf24;padding:6px 16px;border-radius:8px;display:inline-block}' +
+          '.pno{font-size:13px;color:#64748b;margin-top:6px}' +
+          '.pmeta{font-size:12px;color:#64748b;margin-top:2px}' +
+          '.pinfo{display:flex;justify-content:space-between;gap:20px;margin-bottom:22px;font-size:13px}' +
+          '.pinfo .lbl{color:#64748b;font-size:11px;font-weight:700;margin-bottom:3px}' +
+          '.pinfo .val{font-weight:800}' +
+          'table{width:100%;border-collapse:collapse;margin-bottom:22px}' +
+          'th{background:#0f172a;color:#fff;text-align:right;padding:9px 10px;font-size:12px}' +
+          'td{padding:9px 10px;border-bottom:1px solid #e2e8f0;font-size:13px}' +
+          'tr:nth-child(even) td{background:#f8fafc}' +
+          '.ptotal{display:flex;justify-content:flex-end;margin-bottom:40px}' +
+          '.ptotal-box{min-width:220px;background:#f8fafc;border-radius:10px;padding:14px 18px;display:flex;justify-content:space-between;font-weight:900;font-size:16px}' +
+          '.psign{display:flex;justify-content:space-between;margin-top:60px}' +
+          '.psign div{width:30%;text-align:center;border-top:1.5px solid #94a3b8;padding-top:8px;font-size:12px;color:#475569}' +
+          '.pfoot{text-align:center;color:#94a3b8;font-size:11px;margin-top:40px}' +
+          '@media print{body{padding:14mm}}' +
+        '</style></head><body>' +
+        '<div class="phead"><div class="pbrand"><div class="plogo">' + LOGO_SVG + '</div>' +
+          '<div><div class="pname">HHM</div><div class="psub">نظام إدارة الأعمال</div></div></div>' +
+          '<div class="pdoc"><div class="ptitle">' + title + '</div>' +
+          '<div class="pno">' + (doc.no||'') + '</div>' +
+          '<div class="pmeta">التاريخ: ' + fmtDate(doc.date) + '</div>' + extraMeta + soRef + '</div></div>' +
+        '<div class="pinfo"><div><div class="lbl">العميل</div><div class="val">' + esc(doc.customer||'—') + '</div></div>' +
+          (doc.phone ? '<div><div class="lbl">التليفون</div><div class="val">' + esc(doc.phone) + '</div></div>' : '') + '</div>' +
+        '<table><thead><tr><th style="width:36px">#</th><th>الصنف</th><th style="width:70px">الكمية</th><th style="width:100px">السعر</th><th style="width:110px">الإجمالي</th></tr></thead>' +
+        '<tbody>' + rows + '</tbody></table>' +
+        '<div class="ptotal"><div class="ptotal-box"><span>الإجمالي</span><span>' + money(total) + '</span></div></div>' +
+        '<div class="psign"><div>توقيع العميل</div><div>مسؤول المبيعات</div><div>الحسابات / المخزن</div></div>' +
+        '<div class="pfoot">HHM · نظام إدارة الأعمال — تم الإنشاء بتاريخ ' + fmtDate(todayISO()) + '</div>' +
+        '<script>window.onload=function(){window.print();}<' + '/script>' +
+        '</body></html>';
+
+      w.document.write(htmlDoc);
+      w.document.close();
+    }
+
+    // ---------- LINE ROW ADD/REMOVE ----------
+    function addLineRow(){
+      snapshotFormFields(st._draft);
+      st._draft.lines = readLinesFromDOM();
+      st._draft.lines.push(blankLine());
+      render();
+    }
+    function removeLineRow(lineId){
+      const lines = readLinesFromDOM();
+      if(lines.length <= 1) return;
+      snapshotFormFields(st._draft);
+      st._draft.lines = lines.filter(function(l){ return l.id !== lineId; });
+      render();
+    }
+
+    // ---------- EVENT DELEGATION ----------
+    function attach(){
+      const root = document.getElementById('pageSales');
+      if(!root || root._salesWired) return;
+      root._salesWired = true;
+      root.addEventListener('click', function(e){
+        const el = e.target.closest('[data-action]');
+        if(!el) return;
+        const action = el.getAttribute('data-action');
+        const holder = el.hasAttribute('data-id') ? el : el.closest('[data-id]');
+        const id = holder ? holder.getAttribute('data-id') : null;
+
+        if(action === 'tab'){ st.tab = el.getAttribute('data-tab'); st.mode = 'list'; render(); }
+        else if(action === 'back'){ st.mode = 'list'; render(); }
+        else if(action === 'qoNew'){ st.mode = 'qoForm'; st.id = null; st._draft = null; render(); }
+        else if(action === 'qoOpen'){ st.mode = 'qoView'; st.id = id; render(); }
+        else if(action === 'qoEdit'){ st.mode = 'qoForm'; st.id = id; st._draft = null; render(); }
+        else if(action === 'qoSaveDraft'){ const saved = qoSave(false); if(saved){ st._draft=null; st.mode='qoView'; st.id=saved.id; render(); } }
+        else if(action === 'qoSaveApprove'){ const saved = qoSave(true); if(saved){ st._draft=null; st.mode='qoView'; st.id=saved.id; render(); } }
+        else if(action === 'qoApprove'){ qoApprove(id); }
+        else if(action === 'qoReject'){ qoReject(id); }
+        else if(action === 'qoConvert'){ qoConvertToSO(id); }
+        else if(action === 'soOpen'){ st.mode = 'soView'; st.id = id; render(); }
+        else if(action === 'soApproveSales'){ soApproveSales(id); }
+        else if(action === 'soApproveFinance'){ soApproveFinance(id); }
+        else if(action === 'dispatchSave'){ dispatchSave(id); }
+        else if(action === 'invoiceSave'){ invoiceSave(id); }
+        else if(action === 'invOpen'){ st.mode = 'invView'; st.id = id; render(); }
+        else if(action === 'lineAdd'){ addLineRow(); }
+        else if(action === 'lineRemove'){ removeLineRow(el.getAttribute('data-line')); }
+        else if(action === 'printQo'){ const q = loadArr(K_QO).find(function(x){return x.id===id;}); if(q) printDoc('quotation', q); }
+        else if(action === 'printSo'){ const o = loadArr(K_SO).find(function(x){return x.id===id;}); if(o) printDoc('order', o); }
+        else if(action === 'printDsp'){ const d = loadArr(K_DSP).find(function(x){return x.id===id;}); if(d) printDoc('dispatch', d); }
+        else if(action === 'printInv'){ const v = loadArr(K_INV).find(function(x){return x.id===id;}); if(v) printDoc('invoice', v); }
+      });
+    }
+
+    attach();
+    return { open: open };
+  })();
+
+
+  // ============ ACCOUNTING MODULE ============
+  const Accounting = (function(){
+    const K_SETTINGS = 'hhm_acc_settings';
+    const K_ACCOUNTS = 'hhm_accounts_tree';
+    const K_CC1      = 'hhm_cc1_tree';
+    const K_CC2      = 'hhm_cc2_tree';
+    const K_CUR      = 'hhm_currencies';
+
+    const TREE_META = {
+      accounts: { key: K_ACCOUNTS, label: 'دليل الحسابات' },
+      cc1:      { key: K_CC1,      label: 'مركز تكلفة 1' },
+      cc2:      { key: K_CC2,      label: 'مركز تكلفة 2' }
+    };
+
+    function loadArr(k){ try{ return JSON.parse(localStorage.getItem(k) || '[]'); }catch(e){ return []; } }
+    function saveArr(k, a){ try{ localStorage.setItem(k, JSON.stringify(a)); }catch(e){} }
+    function uid(){ return 'id' + Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+    function esc(s){
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+      });
+    }
+    function val(id){ const el = document.getElementById(id); return el ? el.value.trim() : ''; }
+    function toast(msg){ alert(msg); }
+
+    function defaultTreeSettings(){ return { levelCount: 3, digits: [1,2,3] }; }
+    function loadSettings(){
+      let s = {};
+      try{ s = JSON.parse(localStorage.getItem(K_SETTINGS) || '{}'); }catch(e){ s = {}; }
+      ['accounts','cc1','cc2'].forEach(function(k){
+        if(!s[k]) s[k] = defaultTreeSettings();
+        if(!s[k].digits) s[k].digits = [];
+        while(s[k].digits.length < s[k].levelCount) s[k].digits.push(2);
+      });
+      return s;
+    }
+    function saveSettings(s){ localStorage.setItem(K_SETTINGS, JSON.stringify(s)); }
+
+    function nextCode(treeKey, parentNode){
+      const meta = TREE_META[treeKey];
+      const settings = loadSettings()[treeKey];
+      const arr = loadArr(meta.key);
+      const level = parentNode ? parentNode.level + 1 : 1;
+      const digits = settings.digits[level-1] || 2;
+      const prefix = parentNode ? parentNode.code : '';
+      const siblings = arr.filter(function(n){ return parentNode ? n.parentId === parentNode.id : !n.parentId; });
+      let maxNum = 0;
+      siblings.forEach(function(n){
+        const suffix = n.code.slice(prefix.length);
+        const num = parseInt(suffix, 10);
+        if(!isNaN(num) && num > maxNum) maxNum = num;
+      });
+      return prefix + String(maxNum + 1).padStart(digits, '0');
+    }
+
+    let st = { tab: 'settings', expanded: {}, formTree: null, formParentId: null, formEditId: null, curForm: false, curFormId: null, _settingsDraft: null };
+
+    function open(){
+      st = { tab: 'settings', expanded: {}, formTree: null, formParentId: null, formEditId: null, curForm: false, curFormId: null, _settingsDraft: null };
+      render();
+    }
+
+    // ---------- RENDER ROOT ----------
+    function render(){
+      const root = document.getElementById('accountingContent');
+      if(!root) return;
+      let html = '<div class="stabs">' +
+        tabBtn('settings', 'مؤشرات النظام') +
+        tabBtn('accounts', 'دليل الحسابات') +
+        tabBtn('cc1', 'مركز تكلفة 1') +
+        tabBtn('cc2', 'مركز تكلفة 2') +
+        tabBtn('currencies', 'العملات') +
+      '</div>';
+
+      if(st.tab === 'settings') html += renderSettingsTab();
+      else if(st.tab === 'accounts') html += renderTreeTab('accounts');
+      else if(st.tab === 'cc1') html += renderTreeTab('cc1');
+      else if(st.tab === 'cc2') html += renderTreeTab('cc2');
+      else if(st.tab === 'currencies') html += renderCurrenciesTab();
+
+      root.innerHTML = html;
+    }
+
+    function tabBtn(id, label){
+      const active = (st.tab === id) ? ' active' : '';
+      return '<button class="stab' + active + '" data-action="accTab" data-tab="' + id + '">' + label + '</button>';
+    }
+
+    function emptyBlock(icon, title, desc){
+      return '<div class="empty-state"><div class="empty-icon">' + icon + '</div>' +
+        '<h3 class="empty-title">' + title + '</h3><p class="empty-desc">' + desc + '</p></div>';
+    }
+
+    // ---------- SYSTEM INDICATORS (مؤشرات النظام) ----------
+    function renderSettingsTab(){
+      const s = st._settingsDraft || loadSettings();
+      st._settingsDraft = s;
+      let html = '<div class="sbar"><div class="sbar-title">حدد عدد المستويات وعدد خانات كود كل مستوى — بيتحدد بيها ترقيم الحسابات ومراكز التكلفة أوتوماتيك</div></div>';
+      ['accounts','cc1','cc2'].forEach(function(tk){
+        const meta = TREE_META[tk];
+        const cfg = s[tk];
+        html += '<div class="settings-card"><div class="sbar-title" style="margin-bottom:14px">' + meta.label + '</div>';
+        html += '<div class="sfield" style="max-width:220px"><label>عدد المستويات (1 - 6)</label>' +
+          '<select data-action="lvlCountChange" data-tree="' + tk + '">' +
+          [1,2,3,4,5,6].map(function(n){ return '<option value="' + n + '"' + (n === cfg.levelCount ? ' selected' : '') + '>' + n + '</option>'; }).join('') +
+          '</select></div>';
+        html += '<div>';
+        for(let i = 0; i < cfg.levelCount; i++){
+          html += '<div class="settings-level-row"><div>المستوى ' + (i+1) + '</div>' +
+            '<div style="color:var(--muted);font-size:12.5px">عدد خانات كود هذا المستوى</div>' +
+            '<div><input type="number" min="1" max="6" class="digit-input" data-tree="' + tk + '" data-level="' + i + '" value="' + (cfg.digits[i] || 2) + '"></div></div>';
+        }
+        html += '</div>';
+        html += '<div style="margin-top:14px;text-align:left"><button class="btn btn-accent btn-sm" data-action="saveSettings" data-tree="' + tk + '">حفظ إعدادات ' + meta.label + '</button></div>';
+        html += '<p style="font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.7">' +
+          'مثال: مستوى 1 بخانتين يدي أكواد 01، 02... ومستوى 2 بـ3 خانات تحت 01 يديك 01001، 01002...<br>' +
+          'تغيير الإعدادات ميغيّرش أكواد العناصر الموجودة بالفعل، وبيتطبق بس على أي عنصر جديد.</p>';
+        html += '</div>';
+      });
+      return html;
+    }
+
+    function syncSettingsDraftFromDOM(){
+      if(!st._settingsDraft) st._settingsDraft = loadSettings();
+      document.querySelectorAll('.digit-input').forEach(function(inp){
+        const tree = inp.getAttribute('data-tree');
+        const lvl = parseInt(inp.getAttribute('data-level'), 10);
+        const v = Math.max(1, parseInt(inp.value, 10) || 1);
+        if(st._settingsDraft[tree] && st._settingsDraft[tree].digits) st._settingsDraft[tree].digits[lvl] = v;
+      });
+    }
+
+    // ---------- TREE TABS (دليل الحسابات / مراكز التكلفة) ----------
+    function renderTreeTab(treeKey){
+      const meta = TREE_META[treeKey];
+      const settings = loadSettings()[treeKey];
+      const arr = loadArr(meta.key);
+      let html = '<div class="sbar"><div class="sbar-title">' + arr.length + ' عنصر — ' + settings.levelCount + ' مستويات مُعرّفة</div>' +
+        '<button class="btn btn-accent" data-action="treeAddRoot" data-tree="' + treeKey + '">+ إضافة رئيسي جديد</button></div>';
+
+      if(st.formTree === treeKey) html += renderTreeForm(treeKey);
+
+      if(!arr.length){ return html + emptyBlock('🌳', 'الشجرة فاضية', 'ابدأ بإضافة عنصر رئيسي.'); }
+
+      html += '<div class="tree-wrap">';
+      const roots = arr.filter(function(n){ return !n.parentId; }).sort(function(a,b){ return a.code.localeCompare(b.code); });
+      roots.forEach(function(n){ html += renderNode(n, arr, treeKey, settings); });
+      html += '</div>';
+      return html;
+    }
+
+    function renderNode(node, arr, treeKey, settings){
+      const children = arr.filter(function(n){ return n.parentId === node.id; }).sort(function(a,b){ return a.code.localeCompare(b.code); });
+      const expanded = !!st.expanded[node.id];
+      const isLeaf = node.level >= settings.levelCount;
+      let html = '<div class="tnode-row" style="padding-right:' + ((node.level-1)*22) + 'px">';
+      html += children.length ?
+        ('<button class="texpand" data-action="toggleExpand" data-id="' + node.id + '">' + (expanded ? '▾' : '▸') + '</button>') :
+        '<span class="texpand leaf">•</span>';
+      html += '<span class="tcode">' + node.code + '</span><span class="tname">' + esc(node.name) + '</span>';
+      if(isLeaf) html += '<span class="tbadge-leaf">قابل للاستخدام</span>';
+      html += '<span class="tactions-row">';
+      if(!isLeaf) html += '<button class="ticon-btn add" data-action="treeAddChild" data-tree="' + treeKey + '" data-id="' + node.id + '" title="إضافة فرع">+</button>';
+      html += '<button class="ticon-btn edit" data-action="treeEdit" data-tree="' + treeKey + '" data-id="' + node.id + '" title="تعديل">✎</button>';
+      html += '<button class="ticon-btn del" data-action="treeDelete" data-tree="' + treeKey + '" data-id="' + node.id + '" title="حذف">✕</button>';
+      html += '</span></div>';
+      if(children.length && expanded){
+        children.forEach(function(c){ html += renderNode(c, arr, treeKey, settings); });
+      }
+      return html;
+    }
+
+    function renderTreeForm(treeKey){
+      const meta = TREE_META[treeKey];
+      const arr = loadArr(meta.key);
+      const editing = st.formEditId ? arr.find(function(n){ return n.id === st.formEditId; }) : null;
+      const parent = st.formParentId ? arr.find(function(n){ return n.id === st.formParentId; }) : null;
+      const code = editing ? editing.code : nextCode(treeKey, parent);
+      const name = editing ? editing.name : '';
+      let html = '<div class="sform-card" style="margin-bottom:16px">';
+      html += '<div class="sbar-title" style="margin-bottom:12px">' +
+        (editing ? 'تعديل عنصر' : (parent ? 'إضافة فرع تحت ' + parent.code + ' — ' + esc(parent.name) : 'إضافة عنصر رئيسي جديد')) + '</div>';
+      html += '<div class="sform-grid">' +
+        '<div class="sfield"><label>الكود (تلقائي)</label><input type="text" value="' + code + '" disabled></div>' +
+        '<div class="sfield"><label>الاسم</label><input type="text" id="treeNodeName" value="' + esc(name) + '" placeholder="اسم العنصر"></div>' +
+      '</div>';
+      html += '<div class="sform-actions">' +
+        '<button class="btn btn-outline" data-action="treeFormCancel">إلغاء</button>' +
+        '<button class="btn btn-accent" data-action="treeFormSave" data-tree="' + treeKey + '">حفظ</button>' +
+      '</div></div>';
+      return html;
+    }
+
+    function treeFormSave(tree){
+      const name = val('treeNodeName');
+      if(!name){ toast('اكتب الاسم.'); return; }
+      const meta = TREE_META[tree];
+      const arr = loadArr(meta.key);
+      if(st.formEditId){
+        const node = arr.find(function(n){ return n.id === st.formEditId; });
+        if(node) node.name = name;
+        saveArr(meta.key, arr);
+      } else {
+        const parent = st.formParentId ? arr.find(function(n){ return n.id === st.formParentId; }) : null;
+        const level = parent ? parent.level + 1 : 1;
+        const code = nextCode(tree, parent);
+        arr.push({ id: uid(), code: code, name: name, parentId: parent ? parent.id : null, level: level });
+        saveArr(meta.key, arr);
+        if(parent) st.expanded[parent.id] = true;
+      }
+      st.formTree = null; st.formEditId = null; st.formParentId = null;
+      render();
+    }
+
+    function treeDelete(tree, id){
+      const meta = TREE_META[tree];
+      const arr = loadArr(meta.key);
+      const hasChildren = arr.some(function(n){ return n.parentId === id; });
+      if(hasChildren){ toast('لازم تمسح العناصر الفرعية الأول.'); return; }
+      if(!confirm('تأكيد حذف العنصر؟')) return;
+      saveArr(meta.key, arr.filter(function(n){ return n.id !== id; }));
+      render();
+    }
+
+    // ---------- CURRENCIES (شاشة العملات) ----------
+    function ensureBaseCurrency(){
+      const arr = loadArr(K_CUR);
+      if(!arr.some(function(c){ return c.code === 'EGP'; })){
+        arr.unshift({ id: uid(), code: 'EGP', name: 'جنيه مصري', rate: 1 });
+        saveArr(K_CUR, arr);
+      }
+    }
+
+    function renderCurrenciesTab(){
+      ensureBaseCurrency();
+      const arr = loadArr(K_CUR);
+      let html = '<div class="sbar"><div class="sbar-title">' + arr.length + ' عملة</div>' +
+        '<button class="btn btn-accent" data-action="curAdd">+ عملة جديدة</button></div>';
+      if(st.curForm) html += renderCurForm();
+      html += '<div class="stable-wrap"><table class="stable"><thead><tr>' +
+        '<th>الكود</th><th>الاسم</th><th>سعر التحويل (مقابل الجنيه)</th><th></th></tr></thead><tbody>';
+      arr.forEach(function(c){
+        html += '<tr><td><b>' + esc(c.code) + '</b></td><td>' + esc(c.name) + '</td><td class="num">' + c.rate + '</td>' +
+          '<td><span class="tactions-row"><button class="ticon-btn edit" data-action="curEdit" data-id="' + c.id + '">✎</button>' +
+          (c.code !== 'EGP' ? '<button class="ticon-btn del" data-action="curDelete" data-id="' + c.id + '">✕</button>' : '') +
+          '</span></td></tr>';
+      });
+      return html + '</tbody></table></div>';
+    }
+
+    function renderCurForm(){
+      const arr = loadArr(K_CUR);
+      const editing = st.curFormId ? arr.find(function(c){ return c.id === st.curFormId; }) : null;
+      const isBase = editing && editing.code === 'EGP';
+      let html = '<div class="sform-card" style="margin-bottom:16px">';
+      html += '<div class="sbar-title" style="margin-bottom:12px">' + (editing ? 'تعديل عملة' : 'عملة جديدة') + '</div>';
+      html += '<div class="sform-grid">' +
+        '<div class="sfield"><label>الكود</label><input type="text" id="curCode" value="' + esc(editing ? editing.code : '') + '" placeholder="USD"' + (isBase ? ' disabled' : '') + '></div>' +
+        '<div class="sfield"><label>الاسم</label><input type="text" id="curName" value="' + esc(editing ? editing.name : '') + '" placeholder="دولار أمريكي"></div>' +
+        '<div class="sfield"><label>سعر التحويل مقابل الجنيه</label><input type="number" step="any" min="0" id="curRate" value="' + (editing ? editing.rate : 1) + '"' + (isBase ? ' disabled' : '') + '></div>' +
+      '</div>';
+      html += '<div class="sform-actions">' +
+        '<button class="btn btn-outline" data-action="curCancel">إلغاء</button>' +
+        '<button class="btn btn-accent" data-action="curSave">حفظ</button>' +
+      '</div></div>';
+      return html;
+    }
+
+    function curSave(){
+      const code = val('curCode').toUpperCase();
+      const name = val('curName');
+      const rate = parseFloat(val('curRate')) || 0;
+      if(!code || !name){ toast('اكتب الكود والاسم.'); return; }
+      const arr = loadArr(K_CUR);
+      if(st.curFormId){
+        const c = arr.find(function(x){ return x.id === st.curFormId; });
+        if(c){
+          c.name = name;
+          if(c.code !== 'EGP'){ c.code = code; c.rate = rate; }
+        }
+        saveArr(K_CUR, arr);
+      } else {
+        if(rate <= 0){ toast('سعر التحويل لازم يكون أكبر من صفر.'); return; }
+        if(arr.some(function(x){ return x.code === code; })){ toast('الكود ده موجود بالفعل.'); return; }
+        arr.push({ id: uid(), code: code, name: name, rate: rate });
+        saveArr(K_CUR, arr);
+      }
+      st.curForm = false; st.curFormId = null;
+      render();
+    }
+
+    function curDelete(id){
+      const arr = loadArr(K_CUR);
+      const c = arr.find(function(x){ return x.id === id; });
+      if(c && c.code === 'EGP'){ toast('مينفعش تمسح العملة الأساسية (الجنيه المصري).'); return; }
+      if(!confirm('تأكيد حذف العملة؟')) return;
+      saveArr(K_CUR, arr.filter(function(x){ return x.id !== id; }));
+      render();
+    }
+
+    // ---------- EVENT DELEGATION ----------
+    function attach(){
+      const root = document.getElementById('pageAccounting');
+      if(!root || root._wired) return;
+      root._wired = true;
+
+      root.addEventListener('click', function(e){
+        const el = e.target.closest('[data-action]');
+        if(!el) return;
+        const action = el.getAttribute('data-action');
+        const holder = el.hasAttribute('data-id') ? el : el.closest('[data-id]');
+        const id = holder ? holder.getAttribute('data-id') : null;
+        const tree = el.getAttribute('data-tree');
+
+        if(action === 'accTab'){ st.tab = el.getAttribute('data-tab'); st.formTree = null; st.curForm = false; render(); }
+        else if(action === 'toggleExpand'){ st.expanded[id] = !st.expanded[id]; render(); }
+        else if(action === 'treeAddRoot'){ st.formTree = tree; st.formParentId = null; st.formEditId = null; render(); }
+        else if(action === 'treeAddChild'){ st.formTree = tree; st.formParentId = id; st.formEditId = null; st.expanded[id] = true; render(); }
+        else if(action === 'treeEdit'){
+          const meta = TREE_META[tree];
+          const node = loadArr(meta.key).find(function(n){ return n.id === id; });
+          st.formTree = tree; st.formEditId = id; st.formParentId = node ? node.parentId : null; render();
+        }
+        else if(action === 'treeFormCancel'){ st.formTree = null; st.formEditId = null; st.formParentId = null; render(); }
+        else if(action === 'treeFormSave'){ treeFormSave(tree); }
+        else if(action === 'treeDelete'){ treeDelete(tree, id); }
+        else if(action === 'saveSettings'){ syncSettingsDraftFromDOM(); saveSettings(st._settingsDraft); st._settingsDraft = null; toast('تم حفظ الإعدادات.'); render(); }
+        else if(action === 'curAdd'){ st.curForm = true; st.curFormId = null; render(); }
+        else if(action === 'curEdit'){ st.curForm = true; st.curFormId = id; render(); }
+        else if(action === 'curCancel'){ st.curForm = false; st.curFormId = null; render(); }
+        else if(action === 'curSave'){ curSave(); }
+        else if(action === 'curDelete'){ curDelete(id); }
+      });
+
+      root.addEventListener('change', function(e){
+        const el = e.target.closest('[data-action="lvlCountChange"]');
+        if(!el) return;
+        syncSettingsDraftFromDOM();
+        const tree = el.getAttribute('data-tree');
+        const n = parseInt(el.value, 10);
+        const cfg = st._settingsDraft[tree];
+        const newDigits = [];
+        for(let i = 0; i < n; i++) newDigits.push(cfg.digits[i] || 2);
+        cfg.levelCount = n; cfg.digits = newDigits;
+        render();
+      });
+    }
+
+    attach();
+    return { open: open };
+  })();
 
   // ============ WIRE-UP ============
   $('loginForm').addEventListener('submit', attemptLogin);
